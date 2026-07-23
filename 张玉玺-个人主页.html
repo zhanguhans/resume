@@ -262,6 +262,7 @@ document.getElementById('skillTags').addEventListener('click',function(e){
 function toggleDark(){
   document.body.classList.toggle('dark');document.body.classList.toggle('light');
   document.getElementById('themeLabel').textContent=document.body.classList.contains('dark')?'浅色模式':'深色模式';
+  var m=document.getElementById('mascotCanvas');if(m){m.style.display=document.body.classList.contains('dark')?'none':'block';}
 }
 
 var secs=document.querySelectorAll('.sec,[id]');
@@ -293,6 +294,93 @@ document.querySelectorAll('.n[data-count]').forEach(function(el){el.dataset.suff
   var t=0;
   function anim(ts){t=ts;ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<stars.length;i++){stars[i].upd(t);stars[i].draw()}for(var i=0;i<stars.length;i++)for(var j=i+1;j<stars.length;j++){var dx=stars[i].x-stars[j].x,dy=stars[i].y-stars[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<70){var dk=document.body.classList.contains('dark');ctx.strokeStyle=dk?'rgba(255,255,255,'+(.015*(1-d/70))+')':'rgba(37,99,235,'+(.025*(1-d/70))+')';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[j].x,stars[j].y);ctx.stroke()}}requestAnimationFrame(anim)}requestAnimationFrame(anim);
   addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});addEventListener('mouseleave',function(){mx=-1e3;my=-1e3});
+})();
+
+// ═══════════════ MASCOT CHARACTER ═══════════════
+(function(){
+  var canvas=document.createElement('canvas');
+
+  canvas.id='mascotCanvas';
+
+  canvas.style.cssText='position:fixed;bottom:0;right:0;width:200px;height:260px;pointer-events:none;z-index:200';
+
+  document.body.appendChild(canvas);
+
+  var mctx=canvas.getContext('2d');
+
+  canvas.width=200;canvas.height=260;
+
+  var mmx=innerWidth/2,mmy=innerHeight/2;
+  var blinkTimer=0,blinkState=0;
+
+  function drawMascot(){
+    mctx.clearRect(0,0,200,260);
+
+    // Body
+    mctx.fillStyle='#3b82f6';
+    mctx.beginPath();mctx.ellipse(100,170,55,80,0,0,Math.PI*2);mctx.fill();
+    mctx.fillStyle='#2563eb';
+    mctx.beginPath();mctx.ellipse(100,175,45,65,0,0,Math.PI*2);mctx.fill();
+
+    // Head
+    mctx.fillStyle='#fbbf24';
+    mctx.beginPath();mctx.arc(100,100,42,0,Math.PI*2);mctx.fill();
+
+    // Ears
+    mctx.fillStyle='#f59e0b';
+    mctx.beginPath();mctx.arc(62,62,16,0,Math.PI*2);mctx.fill();
+    mctx.beginPath();mctx.arc(138,62,16,0,Math.PI*2);mctx.fill();
+
+    // Eyes follow mouse
+    var rect=mascotCanvas.getBoundingClientRect();
+    var dx=mmx-(rect.left+78);var dy=mmy-(rect.top+88);
+    var dist=Math.sqrt(dx*dx+dy*dy)||1;
+    var maxMove=5;var scale=Math.min(dist/200,1);
+    var ex1=dx/dist*scale*maxMove;var ey1=dy/dist*scale*maxMove;
+
+    mctx.fillStyle='#fff';
+    mctx.beginPath();mctx.ellipse(78,88,11,14,0,0,Math.PI*2);mctx.fill();
+    mctx.beginPath();mctx.ellipse(110,88,11,14,0,0,Math.PI*2);mctx.fill();
+
+    if(blinkState<0.5){
+      mctx.fillStyle='#1e293b';
+      mctx.beginPath();mctx.ellipse(78+ex1,88+ey1,5,6,0,0,Math.PI*2);mctx.fill();
+      mctx.beginPath();mctx.ellipse(110+ex1,88+ey1,5,6,0,0,Math.PI*2);mctx.fill();
+    }
+
+    // Blush
+    mctx.fillStyle='rgba(239,68,68,0.3)';
+    mctx.beginPath();mctx.ellipse(62,100,8,5,0,0,Math.PI*2);mctx.fill();
+    mctx.beginPath();mctx.ellipse(126,100,8,5,0,0,Math.PI*2);mctx.fill();
+
+    // Mouth
+    mctx.strokeStyle='#1e293b';mctx.lineWidth=2;
+    mctx.beginPath();mctx.arc(94,106,10,0.1,Math.PI-0.1);mctx.stroke();
+
+    // Arms
+    mctx.fillStyle='#fbbf24';
+    mctx.beginPath();mctx.ellipse(48,150,14,30,-0.3,0,Math.PI*2);mctx.fill();
+    mctx.beginPath();mctx.ellipse(152,150,14,30,0.3,0,Math.PI*2);mctx.fill();
+
+    // Name tag
+    mctx.fillStyle='rgba(255,255,255,0.9)';
+    mctx.fillRect(65,130,70,18);mctx.strokeStyle='#e2e8f0';mctx.strokeRect(65,130,70,18);
+    mctx.fillStyle='#1e293b';mctx.font='9px Inter,sans-serif';
+    mctx.textAlign='center';mctx.fillText('张玉玺',100,143);
+  }
+
+  function animateBlink(){
+    blinkTimer++;
+    if(blinkTimer>120+Math.random()*60){
+      blinkTimer=0;blinkState=1;
+      setTimeout(function(){blinkState=0},150);
+    }
+    drawMascot();
+    requestAnimationFrame(animateBlink);
+  }
+  animateBlink();
+
+  document.addEventListener('mousemove',function(e){mmx=e.clientX;mmy=e.clientY});
 })();
 
 document.body.classList.add('light');
