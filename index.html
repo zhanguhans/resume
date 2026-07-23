@@ -10,7 +10,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap');
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Inter','Noto Sans SC','SF Pro Display','PingFang SC',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  body{font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
   body.light{--bg:#f8fafc;--surface:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--accent:#2563eb;--accent-bg:#eff6ff;--shadow:0 1px 3px rgba(0,0,0,0.06)}
   body.dark{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--accent:#60a5fa;--accent-bg:#1e3a5f;--shadow:0 1px 3px rgba(0,0,0,0.3)}
   body{background:var(--bg);color:var(--text)}
@@ -34,7 +34,7 @@
   .hero{background:linear-gradient(135deg,#1e3a5f,#2563eb,#6366f1);border-radius:16px;padding:40px 36px;color:#fff;margin:20px 0 28px;position:relative;overflow:hidden}
   .hero::after{content:'';position:absolute;top:-30%;right:-15%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 70%);border-radius:50%}
   .hero>*{position:relative;z-index:1}
-  .hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.04em}
+  .hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.02em}
   .hero .sub{font-size:1rem;opacity:.85;margin-top:2px}
   .hero .info{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
   .hero .info span{font-size:.82rem;display:flex;align-items:center;gap:6px;opacity:.85}
@@ -49,9 +49,8 @@
   .stat.open .d{max-height:100px;margin-top:8px}
 
   /* Sections */
-  .sec{margin-bottom:32px; opacity:1; transform:none; transition:.4s}
-  .sec.visible{opacity:1;transform:translateY(0)}
-  .sec-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px;letter-spacing:-.01em}
+  .sec{margin-bottom:32px}
+  .sec-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px}
   .sec-title i{color:var(--accent);font-size:.9rem;width:20px;text-align:center}
   .sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
 
@@ -86,7 +85,7 @@
   .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:10px;cursor:pointer;transition:.2s}
   .proj-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
   .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
-  .proj-name{font-weight:700;font-size:.92rem;letter-spacing:-.01em}
+  .proj-name{font-weight:700;font-size:.92rem}
   .proj-date{font-size:.72rem;color:var(--muted);white-space:nowrap}
   .proj-meta{font-size:.74rem;color:var(--muted);margin-top:4px}
   .proj-meta .badge{display:inline-block;font-size:.66rem;padding:2px 8px;border-radius:10px;background:var(--accent-bg);color:var(--accent);margin-right:6px}
@@ -109,76 +108,24 @@
   .btt{position:fixed;bottom:20px;right:20px;z-index:50;width:40px;height:40px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,0.3);opacity:0;pointer-events:none;transition:.3s}
   .btt.show{opacity:1;pointer-events:auto}
 
-  /* ═══════ PAGE LOAD ANIMATIONS ═══════ */
-  .nav, .footer, .btt { animation: fadeDown .7s ease both; }
-  .hero { animation: scaleIn .8s cubic-bezier(0.16,1,0.3,1) both; animation-delay: .15s; }
-  .hero h1 { animation: fadeUp .6s ease both; animation-delay: .4s; }
-  .hero .sub { animation: fadeUp .6s ease both; animation-delay: .5s; }
-  .hero .info { animation: fadeUp .6s ease both; animation-delay: .6s; }
-  .stats .stat:nth-child(1) { animation: fadeUp .5s ease both; animation-delay: .35s; }
-  .stats .stat:nth-child(2) { animation: fadeUp .5s ease both; animation-delay: .45s; }
-  .stats .stat:nth-child(3) { animation: fadeUp .5s ease both; animation-delay: .55s; }
-  .sec:nth-of-type(1) { animation: fadeUp .5s ease both; animation-delay: .5s; }
-  .sec:nth-of-type(2) { animation: fadeUp .5s ease both; animation-delay: .6s; }
-  .sec:nth-of-type(3) { animation: fadeUp .5s ease both; animation-delay: .7s; }
-  .sec:nth-of-type(4) { animation: fadeUp .5s ease both; animation-delay: .8s; }
-  .sec:nth-of-type(5) { animation: fadeUp .5s ease both; animation-delay: .9s; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.94); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
   @media(max-width:768px){
-    .nav-inner{padding:0 12px;height:44px}
-    .nav .logo{font-size:.82rem}
-    .nav-links a,.nav-links button{padding:4px 6px;font-size:.7rem}
-    .wrap{padding:52px 12px 40px}
-    .hero{padding:24px 18px;border-radius:12px;margin:14px 0 20px}
-    .hero h1{font-size:1.6rem}
-    .hero .sub{font-size:.85rem}
-    .hero .info{gap:8px}
-    .hero .info span{font-size:.74rem}
-    .stats{gap:6px}
-    .stat{padding:12px 6px;border-radius:8px}
-    .stat .n{font-size:1.3rem}
-    .stat .l{font-size:.64rem}
+    .nav-inner{padding:0 12px;height:44px}.nav .logo{font-size:.82rem}.nav-links a,.nav-links button{padding:4px 6px;font-size:.7rem}
+    .wrap{padding:52px 12px 40px}.hero{padding:24px 18px;border-radius:12px;margin:14px 0 20px}.hero h1{font-size:1.6rem}.hero .sub{font-size:.85rem}.hero .info{gap:8px}.hero .info span{font-size:.74rem}
+    .stats{gap:6px}.stat{padding:12px 6px;border-radius:8px}.stat .n{font-size:1.3rem}.stat .l{font-size:.64rem}
     .skill-grid{grid-template-columns:1fr}
-    .proj-card{padding:14px;border-radius:8px}
-    .proj-name{font-size:.82rem}
-    .star-list{grid-template-columns:1fr}
-    .star-row{font-size:.74rem}
-    .sec-title{font-size:.95rem;margin-bottom:10px}
-    .tl-card{padding:12px 14px}
-    .tl-card .c{font-size:.85rem}
-    .tl-card .r{font-size:.72rem}
-    .tl-card .desc{font-size:.78rem}
+    .proj-card{padding:14px;border-radius:8px}.proj-name{font-size:.82rem}.star-list{grid-template-columns:1fr}.star-row{font-size:.74rem}
+    .sec-title{font-size:.95rem;margin-bottom:10px}.tl-card{padding:12px 14px}.tl-card .c{font-size:.85rem}.tl-card .r{font-size:.72rem}.tl-card .desc{font-size:.78rem}
     .btt{width:34px;height:34px;right:10px;bottom:14px}
   }
   @media(max-width:480px){
-    .wrap{padding:48px 8px 36px}
-    .hero{padding:18px 12px}
-    .hero h1{font-size:1.4rem}
-    .hero .sub{font-size:.78rem}
-    .hero .info span{font-size:.7rem}
-    .stat .n{font-size:1.1rem}
-    .stat .l{font-size:.6rem}
-    .proj-tab{padding:4px 8px;font-size:.68rem}
+    .wrap{padding:48px 8px 36px}.hero{padding:18px 12px}.hero h1{font-size:1.4rem}.hero .sub{font-size:.78rem}.hero .info span{font-size:.7rem}
+    .stat .n{font-size:1.1rem}.stat .l{font-size:.6rem}.proj-tab{padding:4px 8px;font-size:.68rem}
   }
 </style>
 </head>
 <body class="light">
 <canvas id="starCanvas"></canvas>
 
-<!-- Nav -->
 <nav class="nav"><div class="nav-inner">
   <div class="logo"><span></span>张玉玺</div>
   <div class="nav-links">
@@ -193,7 +140,6 @@
 
 <div class="wrap">
 
-  <!-- Hero -->
   <div class="hero">
     <h1>张玉玺</h1>
     <div class="sub">项目经理 / 实施工程师</div>
@@ -203,40 +149,23 @@
     </div>
   </div>
 
-  <!-- Stats -->
   <div class="stats" id="summary">
     <div class="stat" onclick="this.classList.toggle('open')">
-      <div class="n">6+</div>
-      <div class="l">交付项目</div>
-      <div class="d">主导及参与 6+ 个企业级系统实施项目完整交付</div>
+      <div class="n" data-count="6">0</div><div class="l">交付项目</div><div class="d">主导及参与 6+ 个企业级系统实施项目完整交付</div>
     </div>
     <div class="stat" onclick="this.classList.toggle('open')">
-      <div class="n">3</div>
-      <div class="l">服务行业</div>
-      <div class="d">物流供应链、光伏制造、服装零售</div>
+      <div class="n" data-count="3">0</div><div class="l">服务行业</div><div class="d">物流供应链、光伏制造、服装零售</div>
     </div>
     <div class="stat" onclick="this.classList.toggle('open')">
-      <div class="n">3</div>
-      <div class="l">工作年限</div>
-      <div class="d">从研发工程师成长为项目统筹</div>
+      <div class="n" data-count="3">0</div><div class="l">工作年限</div><div class="d">从研发工程师成长为项目统筹</div>
     </div>
   </div>
 
-  <!-- Summary -->
-  <div class="sec">
-    <div class="sec-title"><i class="fa-solid fa-user"></i>个人总结</div>
-    <p class="summary">两年以上企业级项目实施与管理经验，技术出身，兼具开发落地与项目统筹能力。先后主导及参与<strong>物流供应链、光伏制造、服装零售</strong>等行业系统交付，累计完成 <strong style="color:var(--accent)">6+</strong> 个项目上线。擅长需求调研与方案设计，熟悉 Oracle EBS 大型 ERP 实施流程，兼备 Java 微服务与 Oracle PL/SQL 技术底子，善于在客户、实施顾问、研发团队之间建立高效协作机制。</p>
-  </div>
+  <div class="sec"><div class="sec-title"><i class="fa-solid fa-user"></i>个人总结</div><p class="summary">两年以上企业级项目实施与管理经验，技术出身，兼具开发落地与项目统筹能力。先后主导及参与<strong>物流供应链、光伏制造、服装零售</strong>等行业系统交付，累计完成 <strong style="color:var(--accent)">6+</strong> 个项目上线。擅长需求调研与方案设计，熟悉 Oracle EBS 大型 ERP 实施流程，兼备 Java 微服务与 Oracle PL/SQL 技术底子，善于在客户、实施顾问、研发团队之间建立高效协作机制。</p></div>
 
-  <!-- Skills -->
-  <div class="sec" id="skills">
-    <div class="sec-title"><i class="fa-solid fa-laptop-code"></i>专业技能</div>
+  <div class="sec" id="skills"><div class="sec-title"><i class="fa-solid fa-laptop-code"></i>专业技能</div>
     <div class="skill-tags" id="skillTags">
-      <span class="skill-tag active" data-cat="all">全部</span>
-      <span class="skill-tag" data-cat="pm">项目管理</span>
-      <span class="skill-tag" data-cat="biz">业务领域</span>
-      <span class="skill-tag" data-cat="tech">技术背景</span>
-      <span class="skill-tag" data-cat="tools">工具平台</span>
+      <span class="skill-tag active" data-cat="all">全部</span><span class="skill-tag" data-cat="pm">项目管理</span><span class="skill-tag" data-cat="biz">业务领域</span><span class="skill-tag" data-cat="tech">技术背景</span><span class="skill-tag" data-cat="tools">工具平台</span>
     </div>
     <div class="skill-grid" id="skillCards">
       <div class="skill-card" data-cat="pm"><div class="k">项目管理</div><div class="v">端到端交付：需求调研、方案设计、进度管控、多方协调；熟悉 ERP 实施方法论</div></div>
@@ -246,56 +175,27 @@
     </div>
   </div>
 
-  <!-- Work -->
-  <div class="sec" id="work">
-    <div class="sec-title"><i class="fa-solid fa-briefcase"></i>工作经历</div>
-    <div class="tl-item" onclick="this.classList.toggle('open')">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c">云南伯俊科技有限公司 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2025.03 — 至今</span></div>
-        <div class="r">实施顾问 → 项目经理</div>
-        <div class="desc">伯俊科技专注零售行业 ERP 解决方案。承担 ERP 实施与项目统筹，独立主导多个客户项目的需求调研、方案设计及落地交付，同时负责 Oracle PL/SQL 数据库开发与 SCRM 会员系统实施。</div>
-        <div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div>
-      </div>
-    </div>
-    <div class="tl-item" onclick="this.classList.toggle('open')">
-      <div class="tl-dot"></div>
-      <div class="tl-card">
-        <div class="c">湖北普罗格科技集团 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2023.10 — 2024.11</span></div>
-        <div class="r">研发工程师 → 实施顾问</div>
-        <div class="desc">普罗格为智慧物流与供应链数字化解决方案提供商。负责 OMS、TMS、BMS 标准产品在多客户项目中的实施交付，覆盖需求对接、接口开发、系统联调全流程。</div>
-        <div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div>
-      </div>
-    </div>
+  <div class="sec" id="work"><div class="sec-title"><i class="fa-solid fa-briefcase"></i>工作经历</div>
+    <div class="tl-item" onclick="this.classList.toggle('open')"><div class="tl-dot"></div>
+      <div class="tl-card"><div class="c">云南伯俊科技有限公司 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2025.03 — 至今</span></div><div class="r">实施顾问 → 项目经理</div><div class="desc">伯俊科技专注零售行业 ERP 解决方案。承担 ERP 实施与项目统筹，独立主导多个客户项目的需求调研、方案设计及落地交付，同时负责 Oracle PL/SQL 数据库开发与 SCRM 会员系统实施。</div><div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div></div></div>
+    <div class="tl-item" onclick="this.classList.toggle('open')"><div class="tl-dot"></div>
+      <div class="tl-card"><div class="c">湖北普罗格科技集团 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2023.10 — 2024.11</span></div><div class="r">研发工程师 → 实施顾问</div><div class="desc">普罗格为智慧物流与供应链数字化解决方案提供商。负责 OMS、TMS、BMS 标准产品在多客户项目中的实施交付，覆盖需求对接、接口开发、系统联调全流程。</div><div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div></div></div>
   </div>
 
-  <!-- Projects -->
-  <div class="sec" id="projects">
-    <div class="sec-title"><i class="fa-solid fa-rocket"></i>项目经验</div>
+  <div class="sec" id="projects"><div class="sec-title"><i class="fa-solid fa-rocket"></i>项目经验</div>
     <div class="proj-tabs" id="projTabs">
-      <button class="proj-tab active" data-filter="all">全部</button>
-      <button class="proj-tab" data-filter="统筹">项目统筹</button>
-      <button class="proj-tab" data-filter="负责人">项目负责人</button>
-      <button class="proj-tab" data-filter="实施">驻场实施</button>
+      <button class="proj-tab active" data-filter="all">全部</button><button class="proj-tab" data-filter="统筹">项目统筹</button><button class="proj-tab" data-filter="负责人">项目负责人</button><button class="proj-tab" data-filter="实施">驻场实施</button>
     </div>
     <div id="projList"></div>
   </div>
 
-  <!-- Education -->
-  <div class="sec" id="edu">
-    <div class="sec-title"><i class="fa-solid fa-graduation-cap"></i>教育背景</div>
+  <div class="sec" id="edu"><div class="sec-title"><i class="fa-solid fa-graduation-cap"></i>教育背景</div>
     <div class="edu-card">
       <div style="width:40px;height:40px;border-radius:10px;background:var(--accent-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-school" style="color:var(--accent)"></i></div>
-      <div>
-        <div style="font-weight:700">南阳理工学院 <span style="font-weight:400;font-size:.82rem;color:var(--muted);margin-left:8px;">2020.09 — 2024.06</span></div>
-        <div style="font-size:.82rem;color:var(--muted)">计算机科学与技术 · 本科</div>
-        <div style="font-size:.8rem;margin-top:6px">主修：数据结构与算法、操作系统、计算机网络、数据库原理、计算机组成原理、软件工程、C/Java 程序设计</div>
-        <div style="font-size:.78rem;color:var(--accent);margin-top:4px"><i class="fa-solid fa-trophy"></i> 大学生科研基金立项，停车场寻车导航系统获结项证书</div>
-      </div>
+      <div><div style="font-weight:700">南阳理工学院 <span style="font-weight:400;font-size:.82rem;color:var(--muted);margin-left:8px;">2020.09 — 2024.06</span></div><div style="font-size:.82rem;color:var(--muted)">计算机科学与技术 · 本科</div><div style="font-size:.8rem;margin-top:6px">主修：数据结构与算法、操作系统、计算机网络、数据库原理、计算机组成原理、软件工程、C/Java 程序设计</div><div style="font-size:.78rem;color:var(--accent);margin-top:4px"><i class="fa-solid fa-trophy"></i> 大学生科研基金立项，停车场寻车导航系统获结项证书</div></div>
     </div>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     <button onclick="toggleDark()"><i class="fa-solid fa-circle-half-stroke"></i> <span id="themeLabel">深色模式</span></button>
     <div style="margin-top:8px">© 2026 张玉玺</div>
@@ -305,7 +205,6 @@
 <button class="btt" onclick="scrollTo({top:0,behavior:'smooth'})" id="btt"><i class="fa-solid fa-arrow-up"></i></button>
 
 <script>
-// ── Data ──
 const projs = [
   {title:'艾维华山集团 · ERP 全链路实施 & 智简云 SCRM 搭建',date:'2026.06-07',role:'项目统筹',tags:['统筹'],
    S:'云南省大型服装零售集团，多品牌运营，业务-财务-会员数据割裂，缺乏统一数字化体系',
@@ -336,29 +235,28 @@ const projs = [
 
 const labels={S:'情境',T:'任务',A:'行动',R:'成果'},cls={S:'s',T:'t',A:'a',R:'r'};
 
-function renderProjects(filter='all'){
-  document.getElementById('projList').innerHTML=projs.filter(p=>filter==='all'||p.tags.includes(filter)||p.role.includes(filter))
-  .map(p=>`<div class="proj-card" onclick="this.classList.toggle('open')">
-    <div class="proj-top"><div><div class="proj-name">${p.title}</div>
-    <div class="proj-meta"><span class="badge">${p.role}</span>${p.date}</div></div></div>
-    <div class="star-list">${['S','T','A','R'].map(k=>`<div class="star-row"><div class="star-dot ${cls[k]}">${k}</div><div><strong>${labels[k]}</strong>：${p[k]}</div></div>`).join('')}</div>
-    <div class="expand-hint">点击展开 STAR 详情 <i class="fa-solid fa-chevron-down"></i></div>
-  </div>`).join('');
+function renderProjects(filter){
+  filter=filter||'all';
+  document.getElementById('projList').innerHTML=projs.filter(function(p){return filter==='all'||p.tags.indexOf(filter)>=0||p.role.indexOf(filter)>=0})
+  .map(function(p){return '<div class="proj-card" onclick="this.classList.toggle(\'open\')">'
+    +'<div class="proj-top"><div><div class="proj-name">'+p.title+'</div>'
+    +'<div class="proj-meta"><span class="badge">'+p.role+'</span>'+p.date+'</div></div></div>'
+    +'<div class="star-list">'+['S','T','A','R'].map(function(k){return '<div class="star-row"><div class="star-dot '+cls[k]+'">'+k+'</div><div><strong>'+labels[k]+'</strong>：'+p[k]+'</div></div>'}).join('')+'</div>'
+    +'<div class="expand-hint">点击展开 STAR 详情 <i class="fa-solid fa-chevron-down"></i></div></div>'}).join('');
 }
-renderProjects();
+renderProjects('all');
 
-// ── Interactions ──
-document.getElementById('projTabs').addEventListener('click',e=>{
+document.getElementById('projTabs').addEventListener('click',function(e){
   if(!e.target.classList.contains('proj-tab'))return;
-  document.querySelectorAll('#projTabs .proj-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#projTabs .proj-tab').forEach(function(b){b.classList.remove('active')});
   e.target.classList.add('active');renderProjects(e.target.dataset.filter);
 });
-document.getElementById('skillTags').addEventListener('click',e=>{
+document.getElementById('skillTags').addEventListener('click',function(e){
   if(!e.target.classList.contains('skill-tag'))return;
-  document.querySelectorAll('#skillTags .skill-tag').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('#skillTags .skill-tag').forEach(function(b){b.classList.remove('active')});
   e.target.classList.add('active');
-  const cat=e.target.dataset.cat;
-  document.querySelectorAll('#skillCards>div').forEach(c=>c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none');
+  var cat=e.target.dataset.cat;
+  document.querySelectorAll('#skillCards>div').forEach(function(c){c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none'});
 });
 
 function toggleDark(){
@@ -366,35 +264,39 @@ function toggleDark(){
   document.getElementById('themeLabel').textContent=document.body.classList.contains('dark')?'浅色模式':'深色模式';
 }
 
-// ── Scroll spy (in DOMContentLoaded) ──
-
-document.addEventListener('DOMContentLoaded',function(){
-  document.body.classList.add('light');
-  // Count-up
-  var els=document.querySelectorAll('.n[data-count]');
-  els.forEach(function(el){
-    var t=+el.dataset.count,c=0;
-    function step(){c+=Math.ceil(t/30);if(c>=t){el.textContent=t+'+';return}el.textContent=c;requestAnimationFrame(step)}
-    step();
-  });
-
-  // Scroll spy
-  var secs=document.querySelectorAll('.sec,[id]');
-  var links=document.querySelectorAll('.nav-links a[data-section]');
-  var observer=new IntersectionObserver(function(e){e.forEach(function(x){x.target.classList.toggle('visible',x.isIntersecting)})},{threshold:.1});
-  secs.forEach(function(s){observer.observe(s)});
-  window.addEventListener('scroll',function(){
-    document.getElementById('btt').classList.toggle('show',scrollY>400);
-    var cur='';
-    secs.forEach(function(s){if(s.getBoundingClientRect().top<150)cur=s.id;});
-    links.forEach(function(a){a.classList.toggle('active',a.dataset.section===cur)});
-  });
+var secs=document.querySelectorAll('.sec,[id]');
+var links=document.querySelectorAll('.nav-links a[data-section]');
+var observer=new IntersectionObserver(function(e){e.forEach(function(x){x.target.classList.toggle('visible',x.isIntersecting)})},{threshold:.1});
+secs.forEach(function(s){observer.observe(s)});
+window.addEventListener('scroll',function(){
+  document.getElementById('btt').classList.toggle('show',scrollY>400);
+  var cur='';
+  secs.forEach(function(s){if(s.getBoundingClientRect().top<150)cur=s.id;});
+  links.forEach(function(a){a.classList.toggle('active',a.dataset.section===cur)});
 });
 
-// Starfield
-(()=>{
-  const c=document.getElementById('starCanvas'),ctx=c.getContext('2d');
-  let stars=[],mx=-1e3,my=-1e3,STARS=60;
+var co=new IntersectionObserver(function(e){e.forEach(function(x){
+  if(!x.isIntersecting)return;
+  var el=x.target,t=+el.dataset.count,c=0;
+  function step(){c+=Math.ceil(t/30);if(c>=t){el.textContent=t+'+';return}el.textContent=c;requestAnimationFrame(step)}step();co.unobserve(el);
+})},{threshold:.5});
+document.querySelectorAll('.n[data-count]').forEach(function(el){el.dataset.suffix='+';co.observe(el)});
+
+(function(){
+  var c=document.getElementById('starCanvas'),ctx=c.getContext('2d'),stars=[],mx=-1e3,my=-1e3,N=60;
   function rs(){c.width=innerWidth;c.height=innerHeight}rs();addEventListener('resize',rs);
-  class S{constructor(){this.reset(1)}
-    reset(i){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.r=.5+Math.random()*1.2;this.a=.15+Math.random(
+  function Star(){this.reset(1)}
+  Star.prototype.reset=function(i){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.r=.5+Math.random()*1.2;this.a=.15+Math.random()*.4;this.sp=.004+Math.random()*.012;this.so=Math.random()*Math.PI*2;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;if(!i){this.x=Math.random()*c.width;this.y=-5}};
+  Star.prototype.upd=function(t){this.a=this.a+Math.sin(t*this.sp+this.so)*.1;var dx=this.x-mx,dy=this.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<100){var f=(1-d/100)*1.2;this.a=Math.min(1,this.a+f*.5);this.x+=dx/d*f*.6;this.y+=dy/d*f*.6}this.x+=this.vx;this.y+=this.vy;if(this.y>c.height+5){this.y=-5;this.x=Math.random()*c.width}if(this.x<-5)this.x=c.width+5;if(this.x>c.width+5)this.x=-5};
+  Star.prototype.draw=function(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);var dk=document.body.classList.contains('dark');ctx.fillStyle=dk?'rgba(255,255,255,'+Math.max(0,this.a)+')':'rgba(37,99,235,'+Math.max(0,this.a)+')';ctx.fill()};
+  for(var i=0;i<N;i++)stars.push(new Star());
+  var t=0;
+  function anim(ts){t=ts;ctx.clearRect(0,0,c.width,c.height);for(var i=0;i<stars.length;i++){stars[i].upd(t);stars[i].draw()}for(var i=0;i<stars.length;i++)for(var j=i+1;j<stars.length;j++){var dx=stars[i].x-stars[j].x,dy=stars[i].y-stars[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<70){var dk=document.body.classList.contains('dark');ctx.strokeStyle=dk?'rgba(255,255,255,'+(.015*(1-d/70))+')':'rgba(37,99,235,'+(.025*(1-d/70))+')';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[j].x,stars[j].y);ctx.stroke()}}requestAnimationFrame(anim)}requestAnimationFrame(anim);
+  addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});addEventListener('mouseleave',function(){mx=-1e3;my=-1e3});
+})();
+
+document.body.classList.add('light');
+</script>
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
