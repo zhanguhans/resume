@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张玉玺 - 项目经理 / 实施工程师</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter','Noto Sans SC',sans-serif;-webkit-font-smoothing:antialiased}
+  body.light{--bg:#f8fafc;--surface:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--accent:#2563eb;--accent-bg:#eff6ff;--shadow:0 1px 3px rgba(0,0,0,0.06)}
+  body.dark{--bg:#0f172a;--surface:#1e293b;--text:#f1f5f9;--muted:#94a3b8;--border:#334155;--accent:#60a5fa;--accent-bg:#1e3a5f;--shadow:0 1px 3px rgba(0,0,0,0.3)}
+  body{background:var(--bg);color:var(--text)}
+
+  #starCanvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:24px 28px 60px}
+
+  /* Nav */
+  .nav{position:sticky;top:0;z-index:100;background:rgba(248,250,252,0.85);border-bottom:1px solid var(--border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+  body.dark .nav{background:rgba(15,23,42,0.85)}
+  .nav-inner{max-width:760px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;height:50px}
+  .nav .logo{font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:8px;white-space:nowrap}
+  .nav .logo span{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .nav-links{display:flex;gap:2px}
+  .nav-links a,.nav-links button{text-decoration:none;color:var(--muted);font-size:.78rem;font-weight:500;padding:5px 10px;border-radius:6px;transition:.2s;border:none;background:none;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .nav-links a:hover,.nav-links button:hover{color:var(--text);background:var(--accent-bg)}
+  .nav-links a.active{color:var(--accent);background:var(--accent-bg)}
+
+  /* Hero */
+  .hero{background:linear-gradient(135deg,#1e3a5f,#2563eb,#6366f1);border-radius:16px;padding:40px 36px;color:#fff;margin:20px 0 28px;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;top:-30%;right:-15%;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.1),transparent 70%);border-radius:50%}
+  .hero>*{position:relative;z-index:1}
+  .hero h1{font-size:2.2rem;font-weight:800;letter-spacing:-.02em}
+  .hero .sub{font-size:1rem;opacity:.85;margin-top:2px}
+  .hero .info{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
+  .hero .info span{font-size:.82rem;display:flex;align-items:center;gap:6px;opacity:.85}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}
+  .stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 14px;text-align:center;box-shadow:var(--shadow);cursor:pointer;transition:.2s}
+  .stat:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.08)}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--accent)}
+  .stat .l{font-size:.72rem;color:var(--muted);margin-top:2px}
+  .stat .d{max-height:0;overflow:hidden;transition:.35s;font-size:.74rem;color:var(--text);line-height:1.5}
+  .stat.open .d{max-height:100px;margin-top:8px}
+
+  /* Sections */
+  .sec{margin-bottom:32px;opacity:0;transform:translateY(16px);transition:.4s}
+  .sec.visible{opacity:1;transform:translateY(0)}
+  .sec-title{font-size:1.1rem;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+  .sec-title i{color:var(--accent);font-size:.9rem;width:20px;text-align:center}
+  .sec-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+  /* Summary */
+  .summary{font-size:.9rem;line-height:1.8;color:var(--text)}
+
+  /* Skills */
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .skill-tag{padding:5px 12px;border-radius:16px;font-size:.76rem;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:.2s;user-select:none}
+  .skill-tag:hover,.skill-tag.active{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+  .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+  .skill-card .k{font-size:.72rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .skill-card .v{font-size:.84rem;line-height:1.5}
+
+  /* Timeline */
+  .tl-item{position:relative;padding-left:24px;margin-bottom:18px;cursor:pointer}
+  .tl-item:hover .tl-card{box-shadow:0 3px 12px rgba(0,0,0,0.08)}
+  .tl-dot{position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .tl-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);transition:.2s}
+  .tl-card .c{font-weight:700;font-size:.95rem}
+  .tl-card .r{font-size:.78rem;color:var(--muted);margin-top:2px}
+  .tl-card .desc{font-size:.84rem;color:var(--text);margin-top:6px;line-height:1.6;max-height:0;overflow:hidden;transition:.3s}
+  .tl-item.open .desc{max-height:120px;margin-top:6px}
+  .expand-hint{font-size:.7rem;color:var(--muted);margin-top:4px}
+
+  /* Projects */
+  .proj-tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
+  .proj-tab{padding:5px 14px;border-radius:16px;font-size:.76rem;font-weight:500;border:1px solid var(--border);background:var(--surface);color:var(--muted);cursor:pointer;transition:.2s;font-family:inherit}
+  .proj-tab:hover{border-color:var(--accent);color:var(--accent)}
+  .proj-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .proj-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:10px;cursor:pointer;transition:.2s}
+  .proj-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+  .proj-name{font-weight:700;font-size:.92rem}
+  .proj-date{font-size:.72rem;color:var(--muted);white-space:nowrap}
+  .proj-meta{font-size:.74rem;color:var(--muted);margin-top:4px}
+  .proj-meta .badge{display:inline-block;font-size:.66rem;padding:2px 8px;border-radius:10px;background:var(--accent-bg);color:var(--accent);margin-right:6px}
+  .star-list{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px;max-height:0;overflow:hidden;transition:.35s}
+  .proj-card.open .star-list{max-height:400px;margin-top:12px}
+  .proj-card.open .expand-hint{display:none}
+  .star-row{display:flex;gap:6px;font-size:.8rem;align-items:flex-start}
+  .star-dot{flex-shrink:0;width:20px;height:20px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.65rem;color:#fff;margin-top:1px}
+  .star-dot.s{background:#3b82f6}.star-dot.t{background:#f59e0b}.star-dot.a{background:#10b981}.star-dot.r{background:#8b5cf6}
+
+  /* Edu */
+  .edu-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:flex-start}
+
+  /* Footer */
+  .footer{text-align:center;color:var(--muted);font-size:.74rem;padding:20px 0 0;border-top:1px solid var(--border);margin-top:16px}
+  .footer button{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:5px 14px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:.74rem;transition:.2s}
+  .footer button:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* Back to top */
+  .btt{position:fixed;bottom:20px;right:20px;z-index:50;width:40px;height:40px;border-radius:10px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 12px rgba(37,99,235,0.3);opacity:0;pointer-events:none;transition:.3s}
+  .btt.show{opacity:1;pointer-events:auto}
+
+  @media(max-width:768px){
+    .nav-inner{padding:0 12px;height:44px}
+    .nav .logo{font-size:.82rem}
+    .nav-links a,.nav-links button{padding:4px 6px;font-size:.7rem}
+    .wrap{padding:52px 12px 40px}
+    .hero{padding:24px 18px;border-radius:12px;margin:14px 0 20px}
+    .hero h1{font-size:1.6rem}
+    .hero .sub{font-size:.85rem}
+    .hero .info{gap:8px}
+    .hero .info span{font-size:.74rem}
+    .stats{gap:6px}
+    .stat{padding:12px 6px;border-radius:8px}
+    .stat .n{font-size:1.3rem}
+    .stat .l{font-size:.64rem}
+    .skill-grid{grid-template-columns:1fr}
+    .proj-card{padding:14px;border-radius:8px}
+    .proj-name{font-size:.82rem}
+    .star-list{grid-template-columns:1fr}
+    .star-row{font-size:.74rem}
+    .sec-title{font-size:.95rem;margin-bottom:10px}
+    .tl-card{padding:12px 14px}
+    .tl-card .c{font-size:.85rem}
+    .tl-card .r{font-size:.72rem}
+    .tl-card .desc{font-size:.78rem}
+    .btt{width:34px;height:34px;right:10px;bottom:14px}
+  }
+  @media(max-width:480px){
+    .wrap{padding:48px 8px 36px}
+    .hero{padding:18px 12px}
+    .hero h1{font-size:1.4rem}
+    .hero .sub{font-size:.78rem}
+    .hero .info span{font-size:.7rem}
+    .stat .n{font-size:1.1rem}
+    .stat .l{font-size:.6rem}
+    .proj-tab{padding:4px 8px;font-size:.68rem}
+  }
+</style>
+</head>
+<body class="light">
+<canvas id="starCanvas"></canvas>
+
+<!-- Nav -->
+<nav class="nav"><div class="nav-inner">
+  <div class="logo"><span></span>张玉玺</div>
+  <div class="nav-links">
+    <a href="#summary" data-section="summary" class="active">概览</a>
+    <a href="#skills" data-section="skills">技能</a>
+    <a href="#work" data-section="work">经历</a>
+    <a href="#projects" data-section="projects">项目</a>
+    <a href="#edu" data-section="edu">教育</a>
+    <button onclick="toggleDark()"><i class="fa-solid fa-moon"></i></button>
+  </div>
+</div></nav>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>张玉玺</h1>
+    <div class="sub">项目经理 / 实施工程师</div>
+    <div class="info">
+      <span><i class="fa-solid fa-phone"></i>15125842375</span>
+      <span><i class="fa-solid fa-envelope"></i>zyx1487620818@gmail.com</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats" id="summary">
+    <div class="stat" onclick="this.classList.toggle('open')">
+      <div class="n" data-count="6">0</div>
+      <div class="l">交付项目</div>
+      <div class="d">主导及参与 6+ 个企业级系统实施项目完整交付</div>
+    </div>
+    <div class="stat" onclick="this.classList.toggle('open')">
+      <div class="n" data-count="3">0</div>
+      <div class="l">服务行业</div>
+      <div class="d">物流供应链、光伏制造、服装零售</div>
+    </div>
+    <div class="stat" onclick="this.classList.toggle('open')">
+      <div class="n" data-count="3">0</div>
+      <div class="l">工作年限</div>
+      <div class="d">从研发工程师成长为项目统筹</div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="sec">
+    <div class="sec-title"><i class="fa-solid fa-user"></i>个人总结</div>
+    <p class="summary">两年以上企业级项目实施与管理经验，技术出身，兼具开发落地与项目统筹能力。先后主导及参与<strong>物流供应链、光伏制造、服装零售</strong>等行业系统交付，累计完成 <strong style="color:var(--accent)">6+</strong> 个项目上线。擅长需求调研与方案设计，熟悉 Oracle EBS 大型 ERP 实施流程，兼备 Java 微服务与 Oracle PL/SQL 技术底子，善于在客户、实施顾问、研发团队之间建立高效协作机制。</p>
+  </div>
+
+  <!-- Skills -->
+  <div class="sec" id="skills">
+    <div class="sec-title"><i class="fa-solid fa-laptop-code"></i>专业技能</div>
+    <div class="skill-tags" id="skillTags">
+      <span class="skill-tag active" data-cat="all">全部</span>
+      <span class="skill-tag" data-cat="pm">项目管理</span>
+      <span class="skill-tag" data-cat="biz">业务领域</span>
+      <span class="skill-tag" data-cat="tech">技术背景</span>
+      <span class="skill-tag" data-cat="tools">工具平台</span>
+    </div>
+    <div class="skill-grid" id="skillCards">
+      <div class="skill-card" data-cat="pm"><div class="k">项目管理</div><div class="v">端到端交付：需求调研、方案设计、进度管控、多方协调；熟悉 ERP 实施方法论</div></div>
+      <div class="skill-card" data-cat="biz"><div class="k">业务领域</div><div class="v">ERP（Oracle EBS）、OMS / TMS / BMS 物流供应链、SCRM 会员管理（智简云、有赞、EZR）、国际物流报关</div></div>
+      <div class="skill-card" data-cat="tech"><div class="k">技术背景</div><div class="v">Java / Spring Boot 微服务；Oracle PL/SQL 存储过程；MySQL / Redis</div></div>
+      <div class="skill-card" data-cat="tools"><div class="k">工具平台</div><div class="v">阿里云 & 腾讯云配置运维；Codex & Claude Code 等 AI 工具项目化运用；Git、Linux</div></div>
+    </div>
+  </div>
+
+  <!-- Work -->
+  <div class="sec" id="work">
+    <div class="sec-title"><i class="fa-solid fa-briefcase"></i>工作经历</div>
+    <div class="tl-item" onclick="this.classList.toggle('open')">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c">云南伯俊科技有限公司 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2025.03 — 至今</span></div>
+        <div class="r">实施顾问 → 项目经理</div>
+        <div class="desc">伯俊科技专注零售行业 ERP 解决方案。承担 ERP 实施与项目统筹，独立主导多个客户项目的需求调研、方案设计及落地交付，同时负责 Oracle PL/SQL 数据库开发与 SCRM 会员系统实施。</div>
+        <div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div>
+      </div>
+    </div>
+    <div class="tl-item" onclick="this.classList.toggle('open')">
+      <div class="tl-dot"></div>
+      <div class="tl-card">
+        <div class="c">湖北普罗格科技集团 <span style="font-weight:400;font-size:.78rem;color:var(--muted);margin-left:8px;">2023.10 — 2024.11</span></div>
+        <div class="r">研发工程师 → 实施顾问</div>
+        <div class="desc">普罗格为智慧物流与供应链数字化解决方案提供商。负责 OMS、TMS、BMS 标准产品在多客户项目中的实施交付，覆盖需求对接、接口开发、系统联调全流程。</div>
+        <div class="expand-hint">点击展开详情 <i class="fa-solid fa-chevron-down"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <div class="sec" id="projects">
+    <div class="sec-title"><i class="fa-solid fa-rocket"></i>项目经验</div>
+    <div class="proj-tabs" id="projTabs">
+      <button class="proj-tab active" data-filter="all">全部</button>
+      <button class="proj-tab" data-filter="统筹">项目统筹</button>
+      <button class="proj-tab" data-filter="负责人">项目负责人</button>
+      <button class="proj-tab" data-filter="实施">驻场实施</button>
+    </div>
+    <div id="projList"></div>
+  </div>
+
+  <!-- Education -->
+  <div class="sec" id="edu">
+    <div class="sec-title"><i class="fa-solid fa-graduation-cap"></i>教育背景</div>
+    <div class="edu-card">
+      <div style="width:40px;height:40px;border-radius:10px;background:var(--accent-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fa-solid fa-school" style="color:var(--accent)"></i></div>
+      <div>
+        <div style="font-weight:700">南阳理工学院 <span style="font-weight:400;font-size:.82rem;color:var(--muted);margin-left:8px;">2020.09 — 2024.06</span></div>
+        <div style="font-size:.82rem;color:var(--muted)">计算机科学与技术 · 本科</div>
+        <div style="font-size:.8rem;margin-top:6px">主修：数据结构与算法、操作系统、计算机网络、数据库原理、计算机组成原理、软件工程、C/Java 程序设计</div>
+        <div style="font-size:.78rem;color:var(--accent);margin-top:4px"><i class="fa-solid fa-trophy"></i> 大学生科研基金立项，停车场寻车导航系统获结项证书</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <button onclick="toggleDark()"><i class="fa-solid fa-circle-half-stroke"></i> <span id="themeLabel">深色模式</span></button>
+    <div style="margin-top:8px">© 2026 张玉玺</div>
+  </div>
+</div>
+
+<button class="btt" onclick="scrollTo({top:0,behavior:'smooth'})" id="btt"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+// ── Data ──
+const projs = [
+  {title:'艾维华山集团 · ERP 全链路实施 & 智简云 SCRM 搭建',date:'2026.06-07',role:'项目统筹',tags:['统筹'],
+   S:'云南省大型服装零售集团，多品牌运营，业务-财务-会员数据割裂，缺乏统一数字化体系',
+   T:'担任技术统筹，交付 ERP 一站式服务 + 私域 SCRM 商城 + 会员系统，实现全链路整合',
+   A:'统筹 ERP 部署、Oracle 开发、智简云系统三条工作线并行推进，推动 ERP ↔ 企微 ↔ 智简云 ↔ 会员系统数据互通',
+   R:'业务-财务-会员全链路闭环，私域 SCRM 商城上线，会员体系全量迁移，覆盖集团多品牌'},
+  {title:'度嘉班妮 · 有赞会员商城切换',date:'2026.03-04',role:'项目负责人',tags:['负责人'],
+   S:'客户会员体系基于达摩+微盟，需平滑迁移至有赞，数万条会员数据跨平台流转',
+   T:'独立负责全流程，确保数据完整迁移、切换期间会员服务不中断',
+   A:'制定切换方案并主导执行，完成达摩与微盟数据清洗、迁移与校验，协调多方处理数据映射与接口适配',
+   R:'两个月交付，数万条会员档案、积分及权益精准迁移，切换期间零服务中断'},
+  {title:'云南红绶带 · ERP 部署 & 智简云会员系统上线',date:'2025.11-12',role:'项目负责人',tags:['负责人'],
+   S:'客户为服装零售企业，无 ERP 及会员管理系统，业务流程全人工，需从零搭建数字化基础体系',
+   T:'主导伯俊 ERP 系统部署开发与智简云会员系统上线，两个月内完成从零到交付',
+   A:'制定部署方案并完成核心模块开发与业务流程配置，同步推进智简云会员系统数据初始化与对接联调',
+   R:'ERP 与会员系统按期上线，客户实现业务管理与会员运营数字化闭环'},
+  {title:'云南圣弗兰 · ERP 切换 & 多系统接口对接',date:'2025.10-11',role:'项目负责人',tags:['负责人'],
+   S:'客户须切换 ERP 系统，同时对接微盟商城与达摩会员系统，三套异构系统数据需打通',
+   T:'独立负责实施，两个月内完成 ERP 切换及多系统接口对接，保障业务零中断',
+   A:'完成微盟 ↔ ERP 商品、订单、库存接口实时同步，承接达摩会员接口迁移，解决数据映射问题',
+   R:'三系统数据打通，ERP 成功切换，业务平稳过渡'},
+  {title:'通威太阳能集团 · TMS & BMS 系统上线（含 DHL 对接）',date:'2024',role:'驻场实施',tags:['实施'],
+   S:'全球领先晶硅电池企业，运输结算依赖线下、国际物流缺少 DHL 对接、报关数据分散',
+   T:'驻场交付 TMS/BMS 系统，独立承担 DHL 快递接口开发与报关流程系统化',
+   A:'深入客户现场梳理运输调度、运费结算等核心流程并输出方案；独立完成 DHL 接口设计、联调及报关数据同步',
+   R:'系统按期投产，DHL 国际快递实现下单-追踪-回执全链路自动化，报关业务系统闭环'}
+];
+
+const labels={S:'情境',T:'任务',A:'行动',R:'成果'},cls={S:'s',T:'t',A:'a',R:'r'};
+
+function renderProjects(filter='all'){
+  document.getElementById('projList').innerHTML=projs.filter(p=>filter==='all'||p.tags.includes(filter)||p.role.includes(filter))
+  .map(p=>`<div class="proj-card" onclick="this.classList.toggle('open')">
+    <div class="proj-top"><div><div class="proj-name">${p.title}</div>
+    <div class="proj-meta"><span class="badge">${p.role}</span>${p.date}</div></div></div>
+    <div class="star-list">${['S','T','A','R'].map(k=>`<div class="star-row"><div class="star-dot ${cls[k]}">${k}</div><div><strong>${labels[k]}</strong>：${p[k]}</div></div>`).join('')}</div>
+    <div class="expand-hint">点击展开 STAR 详情 <i class="fa-solid fa-chevron-down"></i></div>
+  </div>`).join('');
+}
+renderProjects();
+
+// ── Interactions ──
+document.getElementById('projTabs').addEventListener('click',e=>{
+  if(!e.target.classList.contains('proj-tab'))return;
+  document.querySelectorAll('#projTabs .proj-tab').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');renderProjects(e.target.dataset.filter);
+});
+document.getElementById('skillTags').addEventListener('click',e=>{
+  if(!e.target.classList.contains('skill-tag'))return;
+  document.querySelectorAll('#skillTags .skill-tag').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  const cat=e.target.dataset.cat;
+  document.querySelectorAll('#skillCards>div').forEach(c=>c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none');
+});
+
+function toggleDark(){
+  document.body.classList.toggle('dark');document.body.classList.toggle('light');
+  document.getElementById('themeLabel').textContent=document.body.classList.contains('dark')?'浅色模式':'深色模式';
+}
+
+// ── Scroll spy ──
+const secs=document.querySelectorAll('.sec,[id]');
+const links=document.querySelectorAll('.nav-links a[data-section]');
+const observer=new IntersectionObserver(e=>e.forEach(x=>x.target.classList.toggle('visible',x.isIntersecting)),{threshold:.1});
+secs.forEach(s=>observer.observe(s));
+window.addEventListener('scroll',()=>{
+  document.getElementById('btt').classList.toggle('show',scrollY>400);
+  let cur='';
+  secs.forEach(s=>{if(s.getBoundingClientRect().top<150)cur=s.id;});
+  links.forEach(a=>a.classList.toggle('active',a.dataset.section===cur));
+});
+
+// ── Count-up ──
+const co=new IntersectionObserver(e=>e.forEach(x=>{
+  if(!x.isIntersecting)return;
+  const el=x.target,t=+el.dataset.count;let c=0;
+  const step=()=>{c+=Math.ceil(t/30);if(c>=t){el.textContent=t+'+';return}el.textContent=c;requestAnimationFrame(step)};step();co.unobserve(el);
+}),{threshold:.5});
+document.querySelectorAll('.n[data-count]').forEach(el=>{el.dataset.suffix='+';co.observe(el)});
+
+// ── Starfield ──
+(()=>{
+  const c=document.getElementById('starCanvas'),ctx=c.getContext('2d');
+  let stars=[],mx=-1e3,my=-1e3,STARS=60;
+  function rs(){c.width=innerWidth;c.height=innerHeight}rs();addEventListener('resize',rs);
+  class S{constructor(){this.reset(1)}
+    reset(i){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.r=.5+Math.random()*1.2;this.a=.15+Math.random()*.4;this.sp=.004+Math.random()*.012;this.so=Math.random()*Math.PI*2;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2;if(!i){this.x=Math.random()*c.width;this.y=-5}}
+    upd(t){this.a=this.a+Math.sin(t*this.sp+this.so)*.1;const dx=this.x-mx,dy=this.y-my,d=Math.sqrt(dx*dx+dy*dy);if(d<100){const f=(1-d/100)*1.2;this.a=Math.min(1,this.a+f*.5);this.x+=(dx/d)*f*.6;this.y+=(dy/d)*f*.6}this.x+=this.vx;this.y+=this.vy;if(this.y>c.height+5){this.y=-5;this.x=Math.random()*c.width}if(this.x<-5)this.x=c.width+5;if(this.x>c.width+5)this.x=-5}
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);const dk=document.body.classList.contains('dark');ctx.fillStyle=dk?`rgba(255,255,255,${Math.max(0,this.a)})`:`rgba(37,99,235,${Math.max(0,this.a)})`;ctx.fill()}
+  }
+  for(let i=0;i<STARS;i++)stars.push(new S());
+  let t=0;
+  function anim(ts){t=ts;ctx.clearRect(0,0,c.width,c.height);stars.forEach(s=>{s.upd(t);s.draw()});
+    for(let i=0;i<stars.length;i++)for(let j=i+1;j<stars.length;j++){const dx=stars[i].x-stars[j].x,dy=stars[i].y-stars[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<70){const dk=document.body.classList.contains('dark');ctx.strokeStyle=dk?`rgba(255,255,255,${.015*(1-d/70)})`:`rgba(37,99,235,${.025*(1-d/70)})`;ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(stars[i].x,stars[i].y);ctx.lineTo(stars[j].x,stars[j].y);ctx.stroke()}}
+    requestAnimationFrame(anim)}requestAnimationFrame(anim);
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});addEventListener('mouseleave',()=>{mx=-1e3;my=-1e3});
+})();
+
+document.body.classList.add('light');
+</script>
+</body>
+</html>
