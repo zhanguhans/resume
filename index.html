@@ -47,9 +47,12 @@
       overflow-x: hidden;
       background: var(--bg);
       color: var(--text);
-      font-family: "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
       line-height: 1.65;
       font-feature-settings: "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
       transition: background-color .28s ease, color .28s ease;
     }
     body::before {
@@ -132,6 +135,28 @@
     .nav-links a.active { color: var(--accent-strong); }
     .theme { margin-left: 7px; border-color: var(--line); }
 
+    .page-pet { position: fixed; right: 22px; bottom: 20px; z-index: 25; display: grid; justify-items: end; gap: 9px; transition: opacity .28s ease, visibility .28s ease, transform .28s ease; }
+    .page-pet.is-hidden { visibility: hidden; opacity: 0; pointer-events: none; transform: translateY(10px); }
+    .pet-toggle { position: relative; width: 68px; height: 68px; border: 1px solid color-mix(in srgb, var(--accent) 62%, var(--line)); border-radius: 18px; padding: 0; background: var(--surface); box-shadow: 0 16px 34px color-mix(in srgb, var(--accent) 13%, transparent), inset 0 1px 0 color-mix(in srgb, white 12%, transparent); cursor: pointer; transform-style: preserve-3d; transition: transform .28s cubic-bezier(.16, 1, .3, 1), box-shadow .28s ease, border-color .22s ease; }
+    .pet-toggle::after { content: ""; position: absolute; right: 12px; bottom: 7px; left: 12px; height: 7px; border-radius: 50%; background: color-mix(in srgb, var(--accent) 20%, transparent); filter: blur(4px); transform: translateZ(-16px); }
+    .pet-toggle:hover { border-color: var(--accent); box-shadow: 0 22px 42px color-mix(in srgb, var(--accent) 20%, transparent), inset 0 1px 0 color-mix(in srgb, white 16%, transparent); transform: translateY(-4px) rotateY(-7deg) rotateX(4deg); }
+    .pet-toggle:active { transform: translateY(-1px) scale(.97); }
+    .pet-antenna { position: absolute; top: 7px; left: 33px; width: 2px; height: 9px; background: var(--accent); transform: translateZ(15px); }
+    .pet-antenna::after { content: ""; position: absolute; top: -4px; left: -3px; width: 8px; height: 8px; border: 1px solid var(--accent); border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 12%, transparent); }
+    .pet-ear { position: absolute; top: 17px; width: 11px; height: 11px; border: 1px solid var(--accent); background: var(--surface-raised); transform: rotate(45deg) translateZ(6px); }
+    .pet-ear.left { left: 11px; }
+    .pet-ear.right { right: 11px; }
+    .pet-head { position: absolute; top: 18px; left: 15px; width: 38px; height: 28px; border: 1px solid var(--accent); border-radius: 10px 10px 8px 8px; background: var(--surface-raised); box-shadow: inset 0 -5px 0 color-mix(in srgb, var(--accent) 10%, transparent); transform: translateZ(16px); }
+    .pet-eye { position: absolute; top: 10px; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 9px color-mix(in srgb, var(--accent) 70%, transparent); }
+    .pet-eye.left { left: 9px; }
+    .pet-eye.right { right: 9px; }
+    .pet-mouth { position: absolute; right: 14px; bottom: 6px; left: 14px; height: 1px; background: color-mix(in srgb, var(--accent) 70%, var(--line)); }
+    .pet-body { position: absolute; top: 46px; left: 21px; width: 26px; height: 15px; border: 1px solid var(--line); border-radius: 5px 5px 8px 8px; background: var(--surface-raised); transform: translateZ(9px); }
+    .pet-body::before { content: ""; position: absolute; top: 5px; left: 8px; width: 8px; height: 3px; border-radius: 2px; background: var(--accent); box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 60%, transparent); }
+    .pet-message { max-width: min(238px, calc(100vw - 44px)); padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-raised); color: var(--text); font-size: .76rem; line-height: 1.55; box-shadow: var(--shadow); }
+    .pet-message[hidden] { display: none; }
+    .pet-message::after { content: ""; position: absolute; right: 25px; bottom: 88px; width: 8px; height: 8px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface-raised); transform: rotate(45deg); }
+
     .hero {
       min-height: min(680px, calc(100dvh - 68px));
       display: grid;
@@ -152,8 +177,9 @@
       max-width: 680px;
       margin: 22px 0 24px;
       font-size: clamp(3.75rem, 6.1vw, 5.35rem);
-      letter-spacing: -.065em;
-      line-height: .98;
+      letter-spacing: -.045em;
+      line-height: 1.02;
+      font-weight: 850;
       text-wrap: balance;
     }
     .hero h1 span { display: block; color: var(--accent); }
@@ -198,6 +224,9 @@
       border-radius: var(--radius-card);
       background: var(--surface);
       box-shadow: var(--shadow);
+      perspective: 1400px;
+      transform-style: preserve-3d;
+      transition: transform .45s cubic-bezier(.16, 1, .3, 1), box-shadow .3s ease;
     }
     .scene-canvas {
       position: absolute;
@@ -222,15 +251,17 @@
       height: 190px;
       perspective: 700px;
       pointer-events: none;
+      transform: translateZ(24px);
       transition: opacity .35s ease;
     }
     .delivery-map[data-three-ready="true"] .scene-css { opacity: 1; }
-    .scene-orbit { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-12deg); }
+    .scene-orbit { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-12deg); animation: orbit-spin 18s linear infinite; }
     .scene-orbit::before { content: ""; position: absolute; inset: 22px; border: 1px solid var(--accent); border-radius: 50%; opacity: .25; transform: translateZ(-18px); }
+    .scene-orbit::after { content: ""; position: absolute; inset: 45px; border: 1px dashed color-mix(in srgb, var(--accent) 45%, transparent); opacity: .22; transform: translateZ(-12px) rotateZ(45deg); }
     .scene-block { position: absolute; width: 46px; height: 46px; transform-style: preserve-3d; animation: block-float 4.5s ease-in-out infinite; }
-    .scene-block:nth-child(1) { top: 93px; left: 10px; animation-delay: -.6s; }
-    .scene-block:nth-child(2) { top: 38px; left: 93px; animation-delay: -1.5s; }
-    .scene-block:nth-child(3) { top: 93px; right: 10px; animation-delay: -2.4s; }
+    .scene-block:nth-of-type(1) { top: 93px; left: 10px; animation-delay: -.6s; }
+    .scene-block:nth-of-type(2) { top: 38px; left: 93px; animation-delay: -1.5s; }
+    .scene-block:nth-of-type(3) { top: 93px; right: 10px; animation-delay: -2.4s; }
     .scene-face { position: absolute; width: 46px; height: 46px; border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--line)); background: color-mix(in srgb, var(--accent) 20%, var(--surface)); box-shadow: inset 0 0 20px color-mix(in srgb, var(--accent) 12%, transparent); opacity: .9; }
     .scene-face.front { transform: translateZ(23px); }
     .scene-face.back { transform: rotateY(180deg) translateZ(23px); }
@@ -241,6 +272,7 @@
     .scene-link { position: absolute; top: 113px; left: 49px; width: 133px; height: 1px; background: var(--accent); opacity: .55; transform: translateZ(-1px); }
     .scene-link::after { content: ""; position: absolute; top: -28px; left: 66px; width: 1px; height: 29px; background: var(--accent); transform: rotate(36deg); transform-origin: bottom; }
     @keyframes block-float { 50% { transform: translateZ(13px) translateY(-4px); } }
+    @keyframes orbit-spin { from { transform: rotateX(58deg) rotateZ(-12deg); } to { transform: rotateX(58deg) rotateZ(348deg); } }
     @media (prefers-reduced-motion: reduce) { .scene-block { animation: none; } }
     .map-fallback { position: relative; z-index: 1; transition: opacity .35s ease; }
     .scene-note { display: none; }
@@ -282,22 +314,48 @@
     .section { padding: 76px 0; }
     .section-head { position: relative; max-width: 760px; margin-bottom: 30px; padding-left: 26px; }
     .section-head::before { content: ""; position: absolute; top: 5px; bottom: 5px; left: 0; width: 2px; background: var(--accent); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 28%, transparent); }
-    .title { margin: 8px 0 0; font-size: 3rem; letter-spacing: -.06em; line-height: 1.12; }
+    .title { margin: 8px 0 0; font-size: 3rem; letter-spacing: -.035em; line-height: 1.16; font-weight: 850; text-wrap: balance; }
     .intro { max-width: 620px; margin: 13px 0 0; color: var(--muted); font-size: .9rem; }
     .grid { display: grid; gap: 15px; }
     .stats { grid-template-columns: 1.2fr .9fr .9fr; grid-auto-rows: 1fr; }
     .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(214px, 1fr); align-items: stretch; }
     .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow); transition: transform .25s cubic-bezier(.16, 1, .3, 1), border-color .22s ease, box-shadow .22s ease; transform-style: preserve-3d; }
+    .card::before { content: ""; position: absolute; top: 0; right: 24px; left: 24px; height: 1px; background: color-mix(in srgb, var(--accent) 42%, transparent); opacity: .65; }
     .card:hover { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); box-shadow: 0 26px 70px color-mix(in srgb, var(--accent) 11%, transparent); }
-    .stat { min-height: 178px; display: flex; flex-direction: column; padding: 27px; }
+    .stat { min-height: 204px; display: flex; flex-direction: column; padding: 27px; }
     .stat:first-child { background: var(--surface-raised); }
+    .stat-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
     .num { color: var(--accent); font-size: 3.2rem; font-weight: 900; letter-spacing: -.08em; line-height: 1; }
     .label { margin-top: 8px; color: var(--muted); font-size: .82rem; }
-    .detail { margin: auto 0 0; padding-top: 19px; color: var(--text); font-size: .82rem; line-height: 1.7; }
+    .stat-visual { display: flex; align-items: flex-end; height: 42px; margin: 20px 0 0; }
+    .stat-visual i { display: block; font-style: normal; }
+    .project-bars { align-items: flex-end; gap: 6px; }
+    .project-bars i { flex: 1; min-width: 8px; border: 1px solid color-mix(in srgb, var(--accent) 48%, var(--line)); border-bottom: 0; border-radius: 4px 4px 0 0; background: color-mix(in srgb, var(--accent) 30%, transparent); }
+    .project-bars i:nth-child(1) { height: 34%; }
+    .project-bars i:nth-child(2) { height: 48%; }
+    .project-bars i:nth-child(3) { height: 63%; }
+    .project-bars i:nth-child(4) { height: 75%; }
+    .project-bars i:nth-child(5) { height: 88%; }
+    .project-bars i:nth-child(6) { height: 100%; background: var(--accent); }
+    .industry-track { align-items: center; gap: 4px; }
+    .industry-track i { flex: 1; height: 10px; border: 1px solid color-mix(in srgb, var(--accent) 48%, var(--line)); background: color-mix(in srgb, var(--accent) 22%, transparent); }
+    .industry-track i:first-child { border-radius: 5px 0 0 5px; background: color-mix(in srgb, var(--accent) 58%, transparent); }
+    .industry-track i:last-child { border-radius: 0 5px 5px 0; background: var(--accent); }
+    .career-line { position: relative; align-items: center; justify-content: space-between; }
+    .career-line::before { content: ""; position: absolute; right: 5px; left: 5px; top: 20px; height: 1px; background: var(--line); }
+    .career-line i { position: relative; z-index: 1; display: grid; width: 26px; height: 26px; place-items: center; border: 1px solid var(--accent); border-radius: 50%; background: var(--surface); color: var(--accent-strong); }
+    .career-line i.current { background: var(--accent); color: var(--accent-ink); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 12%, transparent); }
+    .career-line b { font: 700 .58rem Consolas, monospace; }
+    .detail { margin: auto 0 0; padding-top: 16px; color: var(--text); font-size: .82rem; line-height: 1.7; }
     .skill { min-height: 214px; height: 100%; display: flex; flex-direction: column; padding: 25px; }
     .skill h3 { margin: 26px 0 9px; font-size: 1.12rem; }
     .skill p, .job p, .project p { margin: auto 0 0; color: var(--muted); font-size: .84rem; line-height: 1.75; }
+    .skill p { margin: 0; }
+    .skill-tags, .job-tags, .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-tags { margin-top: auto; padding-top: 14px; }
+    .skill-tags span, .job-tags span, .project-tags span { display: inline-flex; align-items: center; min-height: 23px; border: 1px solid var(--line); border-radius: 999px; padding: 3px 8px; color: var(--muted); font: 700 .62rem Consolas, monospace; letter-spacing: .02em; }
+    .skill-tags span::before, .job-tags span::before, .project-tags span::before { content: ""; width: 4px; height: 4px; margin-right: 5px; border-radius: 50%; background: var(--accent); }
     .timeline { position: relative; display: grid; gap: 15px; }
     .timeline::before { content: ""; position: absolute; top: 29px; bottom: 29px; left: 22px; width: 1px; background: var(--line); }
     .job { padding: 26px 28px 26px 66px; }
@@ -307,19 +365,21 @@
     .role { margin: 7px 0 0; color: var(--accent-strong); font-size: .84rem; }
     .date { white-space: nowrap; letter-spacing: .05em; }
     .job p { margin-top: 17px; max-width: 900px; }
+    .job-tags { margin-top: 17px; }
     .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 17px; }
     .filter { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; color: var(--muted); font-size: .8rem; cursor: pointer; transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
     .filter.active, .filter:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
-    .project { width: 100%; min-height: 254px; padding: 25px; text-align: left; cursor: pointer; }
+    .project { width: 100%; min-height: 286px; padding: 25px; text-align: left; cursor: pointer; }
     .projecttop, .foot { display: flex; justify-content: space-between; gap: 12px; }
     .arrow { color: var(--muted); font-size: 1.3rem; transition: transform .22s ease, color .22s ease; }
     .project:hover .arrow { transform: translate(3px, -3px); color: var(--accent); }
     .project-title { display: block; margin: 24px 0 10px; color: var(--text); font-size: 1.22rem; font-weight: 700; line-height: 1.4; }
     .project-summary { display: block; color: var(--muted); font-size: .84rem; line-height: 1.75; }
+    .project-tags { margin-top: 15px; }
     .foot { position: absolute; right: 25px; bottom: 20px; left: 25px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .73rem; }
     .empty-state { grid-column: 1 / -1; margin: 0; padding: 28px; border: 1px dashed var(--line); border-radius: var(--radius-card); color: var(--muted); }
     .cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 24px 0 18px; padding: 36px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface-raised); }
-    .cta h2 { margin: 0; font-size: 2.25rem; letter-spacing: -.05em; line-height: 1.2; }
+    .cta h2 { margin: 0; font-size: 2.25rem; letter-spacing: -.035em; line-height: 1.24; font-weight: 850; text-wrap: balance; }
     .cta p { margin: 8px 0 0; color: var(--muted); font-size: .86rem; }
     .footer { display: flex; justify-content: space-between; gap: 14px; padding: 25px 0 34px; color: var(--muted); font: 700 .68rem Consolas, monospace; letter-spacing: .04em; }
 
@@ -329,6 +389,7 @@
     .review-kicker { color: var(--accent-strong); font: 700 .7rem Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
     .review-title { margin: 8px 0 0; font-size: 1.75rem; line-height: 1.3; }
     .review-meta { margin: 7px 0 0; color: var(--muted); font-size: .82rem; }
+    .review-tags { margin-top: 12px; }
     .review-close { flex: 0 0 auto; min-height: 38px; border: 1px solid var(--line); border-radius: var(--radius-control); padding: 7px 12px; background: var(--surface); color: var(--muted); cursor: pointer; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
     .review-close:hover { border-color: var(--accent); color: var(--text); }
     .review-close:active { transform: translateY(1px) scale(.98); }
@@ -341,14 +402,18 @@
     .star b { color: var(--accent-strong); font: 700 .72rem Consolas, monospace; }
     .star p { margin: 8px 0 0; color: var(--muted); font-size: .83rem; line-height: 1.75; }
     .button:focus-visible, .filter:focus-visible, .project:focus-visible, .theme:focus-visible, .review-close:focus-visible, .nav-links a:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, white); outline-offset: 3px; }
+    .pet-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, white); outline-offset: 3px; }
 
     body.reveal-enabled .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1); }
     body.reveal-enabled .reveal.is-visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: no-preference) {
       .delivery-map { animation: hero-enter .75s cubic-bezier(.16, 1, .3, 1) both; }
+      .delivery-map:hover { transform: perspective(1400px) rotateY(-1.5deg) rotateX(1deg) translateY(-4px); box-shadow: 0 30px 76px color-mix(in srgb, var(--accent) 14%, transparent); }
       .map-node:last-child::before { animation: node-pulse 2.4s ease-in-out infinite; }
+      .pet-toggle { animation: pet-idle 4.8s ease-in-out infinite; }
       @keyframes hero-enter { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
       @keyframes node-pulse { 50% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 5%, transparent); } }
+      @keyframes pet-idle { 0%, 100% { transform: translateY(0) rotateZ(0); } 50% { transform: translateY(-4px) rotateZ(-1deg); } }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
@@ -388,6 +453,14 @@
       .map-steps { margin-top: 70px; }
       .hero-meta { gap: 12px 16px; font-size: .6rem; }
       .actions .button { flex: 1 1 150px; }
+      .page-pet { right: 12px; bottom: 14px; }
+      .pet-toggle { width: 58px; height: 58px; transform: scale(.9); }
+      .pet-toggle:hover { transform: scale(.9) translateY(-4px) rotateY(-7deg) rotateX(4deg); }
+      .pet-antenna { left: 28px; }
+      .pet-ear.left { left: 8px; }
+      .pet-ear.right { right: 8px; }
+      .pet-head { left: 12px; }
+      .pet-body { left: 17px; }
     }
   </style>
 </head>
@@ -402,6 +475,13 @@
         </div>
       </div>
     </nav>
+
+    <aside class="page-pet" aria-label="页面助手">
+      <div id="pet-message" class="pet-message" role="status" aria-live="polite" hidden>你好，我是你的交付小助手。一起看看项目复盘吧。</div>
+      <button id="pet-toggle" class="pet-toggle" type="button" aria-label="打开页面助手" aria-controls="pet-message" aria-expanded="false" title="页面助手">
+        <span class="pet-antenna" aria-hidden="true"></span><span class="pet-ear left" aria-hidden="true"></span><span class="pet-ear right" aria-hidden="true"></span><span class="pet-head" aria-hidden="true"><i class="pet-eye left"></i><i class="pet-eye right"></i><i class="pet-mouth"></i></span><span class="pet-body" aria-hidden="true"></span>
+      </button>
+    </aside>
 
     <main class="container">
       <section id="intro" class="hero">
@@ -426,14 +506,14 @@
       </section>
 
       <section class="grid stats reveal" aria-label="项目经验概览">
-        <article class="card stat"><div class="num" data-count="6">0+</div><div class="label">企业级项目交付</div><p class="detail">从需求调研到上线运营的完整交付经验。</p></article>
-        <article class="card stat"><div class="num" data-count="3">0+</div><div class="label">深耕行业领域</div><p class="detail">物流供应链、光伏制造、服装零售。</p></article>
-        <article class="card stat"><div class="num" data-count="3">0+</div><div class="label">年项目实践</div><p class="detail">从研发工程师成长为项目统筹。</p></article>
+        <article class="card stat"><div class="stat-top"><div class="num" data-count="6">0+</div><div class="label">企业级项目交付</div></div><div class="stat-visual project-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><p class="detail">从需求调研到上线运营的完整交付经验。</p></article>
+        <article class="card stat"><div class="stat-top"><div class="num" data-count="3">0+</div><div class="label">深耕行业领域</div></div><div class="stat-visual industry-track" aria-hidden="true"><i></i><i></i><i></i></div><p class="detail">物流供应链、光伏制造、服装零售。</p></article>
+        <article class="card stat"><div class="stat-top"><div class="num" data-count="3">0+</div><div class="label">年项目实践</div></div><div class="stat-visual career-line" aria-hidden="true"><i><b>23</b></i><i><b>24</b></i><i><b>25</b></i><i class="current"><b>26</b></i></div><p class="detail">从研发工程师成长为项目统筹。</p></article>
       </section>
 
-      <section id="skills" class="section reveal"><div class="section-head"><div class="kicker">CAPABILITIES</div><h2 class="title">把业务语言，翻译成系统能力。</h2><p class="intro">既能站在一线梳理场景，也能深入理解接口、数据和技术约束。</p></div><div class="grid skills"><article class="card skill"><b class="index">PROJECT MANAGEMENT</b><h3>项目管理</h3><p>端到端交付：调研、方案、进度管控与多方协同。熟悉 ERP 实施方法论。</p></article><article class="card skill"><b class="index">BUSINESS</b><h3>业务领域</h3><p>ERP、OMS / TMS / BMS、SCRM 会员管理与国际物流报关。</p></article><article class="card skill"><b class="index">TECHNOLOGY</b><h3>技术背景</h3><p>Java / Spring Boot、Oracle PL/SQL、MySQL、Redis。</p></article><article class="card skill"><b class="index">TOOLS</b><h3>工具平台</h3><p>阿里云、腾讯云、Git、Linux，以及 AI 工具项目化使用。</p></article></div></section>
+      <section id="skills" class="section reveal"><div class="section-head"><div class="kicker">CAPABILITIES</div><h2 class="title">把业务语言，翻译成系统能力。</h2><p class="intro">既能站在一线梳理场景，也能深入理解接口、数据和技术约束。</p></div><div class="grid skills"><article class="card skill"><b class="index">PROJECT MANAGEMENT</b><h3>项目管理</h3><p>端到端交付：调研、方案、进度管控与多方协同。熟悉 ERP 实施方法论。</p><div class="skill-tags"><span>需求调研</span><span>方案拆解</span><span>风险跟踪</span></div></article><article class="card skill"><b class="index">BUSINESS</b><h3>业务领域</h3><p>ERP、OMS / TMS / BMS、SCRM 会员管理与国际物流报关。</p><div class="skill-tags"><span>零售</span><span>供应链</span><span>会员增长</span></div></article><article class="card skill"><b class="index">TECHNOLOGY</b><h3>技术背景</h3><p>Java / Spring Boot、Oracle PL/SQL、MySQL、Redis。</p><div class="skill-tags"><span>接口开发</span><span>数据治理</span><span>系统联调</span></div></article><article class="card skill"><b class="index">TOOLS</b><h3>工具平台</h3><p>阿里云、腾讯云、Git、Linux，以及 AI 工具项目化使用。</p><div class="skill-tags"><span>云平台</span><span>版本协作</span><span>AI 提效</span></div></article></div></section>
 
-      <section id="experience" class="section reveal"><div class="section-head"><div class="kicker">EXPERIENCE</div><h2 class="title">从技术现场，到交付全局。</h2></div><div class="timeline"><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>云南伯俊科技有限公司</h3><div class="role">实施顾问 → 项目经理</div></div><b class="date">2025.03 - 至今</b></div><p>承担零售 ERP 实施与项目统筹，独立主导客户调研、方案设计和落地交付。同时负责 Oracle PL/SQL 开发及 SCRM 会员系统实施。</p></article><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>湖北普罗格科技集团</h3><div class="role">研发工程师 → 实施顾问</div></div><b class="date">2023.10 - 2024.11</b></div><p>负责 OMS、TMS、BMS 标准产品的客户实施，覆盖需求对接、接口开发、系统联调和上线交付全流程。</p></article></div></section>
+      <section id="experience" class="section reveal"><div class="section-head"><div class="kicker">EXPERIENCE</div><h2 class="title">从技术现场，到交付全局。</h2></div><div class="timeline"><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>云南伯俊科技有限公司</h3><div class="role">实施顾问 → 项目经理</div></div><b class="date">2025.03 - 至今</b></div><p>承担零售 ERP 实施与项目统筹，独立主导客户调研、方案设计和落地交付。同时负责 Oracle PL/SQL 开发及 SCRM 会员系统实施。</p><div class="job-tags"><span>零售 ERP</span><span>SCRM 实施</span><span>Oracle 开发</span></div></article><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>湖北普罗格科技集团</h3><div class="role">研发工程师 → 实施顾问</div></div><b class="date">2023.10 - 2024.11</b></div><p>负责 OMS、TMS、BMS 标准产品的客户实施，覆盖需求对接、接口开发、系统联调和上线交付全流程。</p><div class="job-tags"><span>OMS / TMS / BMS</span><span>接口开发</span><span>驻场交付</span></div></article></div></section>
 
       <section id="projects" class="section reveal"><div class="section-head"><div class="kicker">SELECTED WORK</div><h2 class="title">项目，不止是按期上线。</h2><p class="intro">按角色筛选项目，点击卡片在页面内展开完整复盘。</p></div><div id="filters" class="filters" role="group" aria-label="项目筛选"></div><div id="project-list" class="grid projects" aria-live="polite"></div><div id="project-review" class="project-review" role="region" aria-label="项目复盘" hidden aria-live="polite"></div></section>
       <section class="cta reveal"><div><h2>期待下一次复杂问题，成为一次漂亮交付。</h2><p>欢迎交流 ERP 实施、系统集成与项目管理机会。</p></div><a class="button primary" href="mailto:zyx1487620818@gmail.com">发起联系 ↗</a></section>
@@ -442,11 +522,11 @@
   </div>
   <script>
     const projects = [
-      {title: '艾维华山集团', date: '2026.06 - 2026.07', role: '项目统筹', category: '统筹', summary: 'ERP 全链路实施与智简云 SCRM 搭建，推动业务、财务、会员数据闭环。', S: '云南省大型服装零售集团，多品牌运营，业务与会员数据割裂。', T: '统筹 ERP、私域 SCRM 商城与会员系统的一站式交付。', A: '并行推进 ERP 部署、Oracle 开发、智简云系统搭建和多端数据互通。', R: '实现业务、财务、会员全链路闭环，完成多品牌会员体系迁移。'},
-      {title: '度嘉班妮', date: '2026.03 - 2026.04', role: '项目负责人', category: '负责人', summary: '有赞会员商城平滑切换，完成数万条会员数据跨平台迁移。', S: '会员体系基于达摩与微盟，需迁移至有赞且服务不能中断。', T: '独立负责全流程，确保数据准确、切换过程稳定。', A: '制定切换方案，完成清洗、迁移、校验及多方接口适配。', R: '两个月交付，数万条会员档案、积分与权益精准迁移。'},
-      {title: '云南红绶带', date: '2025.11 - 2025.12', role: '项目负责人', category: '负责人', summary: '从零交付 ERP 与会员系统，建立服装零售数字化基础体系。', S: '客户业务流程全人工，缺少 ERP 和会员管理能力。', T: '两个月内完成 ERP 部署、业务配置及会员系统上线。', A: '完成核心模块开发、业务流程配置、数据初始化与对接联调。', R: 'ERP 和会员系统按期上线，形成运营数字化闭环。'},
-      {title: '云南圣弗兰', date: '2025.10 - 2025.11', role: '项目负责人', category: '负责人', summary: '完成 ERP 切换及商城、会员等异构系统的数据接口打通。', S: 'ERP 需切换，同时对接微盟商城和达摩会员系统。', T: '在两个月内完成切换，确保业务过程不中断。', A: '实现商品、订单、库存实时同步，处理会员接口迁移及数据映射。', R: '三套系统成功打通，ERP 平稳切换。'},
-      {title: '通威太阳能集团', date: '2024', role: '驻场实施', category: '实施', summary: 'TMS / BMS 系统落地，独立完成 DHL 快递和报关流程系统化。', S: '运输结算依赖线下，国际物流缺少 DHL 对接，报关数据分散。', T: '驻场交付系统，并承担 DHL 接口与报关流程开发。', A: '梳理核心流程，完成接口设计、联调和报关数据同步。', R: '系统按期投产，DHL 实现下单、追踪、回执全链路自动化。'}
+      {title: '艾维华山集团', date: '2026.06 - 2026.07', role: '项目统筹', category: '统筹', tags: ['ERP 实施', 'SCRM', 'Oracle'], summary: 'ERP 全链路实施与智简云 SCRM 搭建，推动业务、财务、会员数据闭环。', S: '云南省大型服装零售集团，多品牌运营，业务与会员数据割裂。', T: '统筹 ERP、私域 SCRM 商城与会员系统的一站式交付。', A: '并行推进 ERP 部署、Oracle 开发、智简云系统搭建和多端数据互通。', R: '实现业务、财务、会员全链路闭环，完成多品牌会员体系迁移。'},
+      {title: '度嘉班妮', date: '2026.03 - 2026.04', role: '项目负责人', category: '负责人', tags: ['会员迁移', '有赞', '数据校验'], summary: '有赞会员商城平滑切换，完成数万条会员数据跨平台迁移。', S: '会员体系基于达摩与微盟，需迁移至有赞且服务不能中断。', T: '独立负责全流程，确保数据准确、切换过程稳定。', A: '制定切换方案，完成清洗、迁移、校验及多方接口适配。', R: '两个月交付，数万条会员档案、积分与权益精准迁移。'},
+      {title: '云南红绶带', date: '2025.11 - 2025.12', role: '项目负责人', category: '负责人', tags: ['零售 ERP', '会员体系', '从零上线'], summary: '从零交付 ERP 与会员系统，建立服装零售数字化基础体系。', S: '客户业务流程全人工，缺少 ERP 和会员管理能力。', T: '两个月内完成 ERP 部署、业务配置及会员系统上线。', A: '完成核心模块开发、业务流程配置、数据初始化与对接联调。', R: 'ERP 和会员系统按期上线，形成运营数字化闭环。'},
+      {title: '云南圣弗兰', date: '2025.10 - 2025.11', role: '项目负责人', category: '负责人', tags: ['ERP 切换', '接口集成', '库存同步'], summary: '完成 ERP 切换及商城、会员等异构系统的数据接口打通。', S: 'ERP 需切换，同时对接微盟商城和达摩会员系统。', T: '在两个月内完成切换，确保业务过程不中断。', A: '实现商品、订单、库存实时同步，处理会员接口迁移及数据映射。', R: '三套系统成功打通，ERP 平稳切换。'},
+      {title: '通威太阳能集团', date: '2024', role: '驻场实施', category: '实施', tags: ['TMS / BMS', 'DHL 接口', '报关流程'], summary: 'TMS / BMS 系统落地，独立完成 DHL 快递和报关流程系统化。', S: '运输结算依赖线下，国际物流缺少 DHL 对接，报关数据分散。', T: '驻场交付系统，并承担 DHL 接口与报关流程开发。', A: '梳理核心流程，完成接口设计、联调和报关数据同步。', R: '系统按期投产，DHL 实现下单、追踪、回执全链路自动化。'}
     ];
     const filterItems = ['全部', '统筹', '负责人', '实施'];
     const list = document.getElementById('project-list');
@@ -474,7 +554,7 @@
       filters.innerHTML = filterItems.map((filter) => `<button class="filter ${filter === selectedFilter ? 'active' : ''}" type="button" data-filter="${filter}" aria-pressed="${filter === selectedFilter}">${filter}</button>`).join('');
       const visible = selectedFilter === '全部' ? projects : projects.filter((project) => project.category === selectedFilter);
       if (!visible.length) { list.innerHTML = '<p class="empty-state">当前筛选暂无项目。</p>'; return; }
-      list.innerHTML = visible.map((project) => `<button class="card project" type="button" data-project="${projects.indexOf(project)}" aria-controls="project-review" aria-expanded="false"><span class="projecttop"><b class="kind">${escapeHtml(project.role)}</b><span class="arrow" aria-hidden="true">↗</span></span><span class="project-title">${escapeHtml(project.title)}</span><span class="project-summary">${escapeHtml(project.summary)}</span><span class="foot"><span>${escapeHtml(project.date)}</span><b class="kind">VIEW CASE</b></span></button>`).join('');
+      list.innerHTML = visible.map((project) => `<button class="card project" type="button" data-project="${projects.indexOf(project)}" aria-controls="project-review" aria-expanded="false"><span class="projecttop"><b class="kind">${escapeHtml(project.role)}</b><span class="arrow" aria-hidden="true">↗</span></span><span class="project-title">${escapeHtml(project.title)}</span><span class="project-summary">${escapeHtml(project.summary)}</span><span class="project-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</span><span class="foot"><span>${escapeHtml(project.date)}</span><b class="kind">VIEW CASE</b></span></button>`).join('');
       list.querySelectorAll('.card').forEach(tilt);
     }
 
@@ -489,7 +569,7 @@
     function openReview(project, trigger) {
       if (lastFocused && lastFocused !== trigger) lastFocused.setAttribute('aria-expanded', 'false');
       lastFocused = trigger;
-      reviewRoot.innerHTML = `<div class="review-head"><div><div class="review-kicker">PROJECT REVIEW</div><h3 class="review-title">${escapeHtml(project.title)}</h3><p class="review-meta">${escapeHtml(project.role)} · ${escapeHtml(project.date)}</p></div><button class="review-close" type="button">收起复盘</button></div><div class="review-grid">${[['S', '情境'], ['T', '任务'], ['A', '行动'], ['R', '成果']].map(([key, label]) => `<article class="review-item"><b>${key} / ${label}</b><p>${escapeHtml(project[key])}</p></article>`).join('')}</div>`;
+      reviewRoot.innerHTML = `<div class="review-head"><div><div class="review-kicker">PROJECT REVIEW</div><h3 class="review-title">${escapeHtml(project.title)}</h3><p class="review-meta">${escapeHtml(project.role)} · ${escapeHtml(project.date)}</p><div class="project-tags review-tags">${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join('')}</div></div><button class="review-close" type="button">收起复盘</button></div><div class="review-grid">${[['S', '情境'], ['T', '任务'], ['A', '行动'], ['R', '成果']].map(([key, label]) => `<article class="review-item"><b>${key} / ${label}</b><p>${escapeHtml(project[key])}</p></article>`).join('')}</div>`;
       trigger.setAttribute('aria-expanded', 'true');
       reviewRoot.hidden = false;
       reviewRoot.querySelector('.review-close').addEventListener('click', () => closeReview());
@@ -551,6 +631,25 @@
       sections.forEach((section) => observer.observe(section));
     }
 
+    function initPet() {
+      const toggle = document.getElementById('pet-toggle');
+      const message = document.getElementById('pet-message');
+      const pet = document.querySelector('.page-pet');
+      if (!toggle || !message || !pet) return;
+      const setOpen = (open) => {
+        message.hidden = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? '收起页面助手' : '打开页面助手');
+      };
+      toggle.addEventListener('click', () => setOpen(message.hidden));
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !message.hidden) setOpen(false); });
+      const hero = document.querySelector('.hero');
+      if (hero && window.matchMedia('(max-width: 560px)').matches && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(([entry]) => pet.classList.toggle('is-hidden', entry.isIntersecting), {threshold: .08});
+        observer.observe(hero);
+      }
+    }
+
     filters.addEventListener('click', (event) => { const button = event.target.closest('[data-filter]'); if (!button) return; selectedFilter = button.dataset.filter; closeReview(false); renderProjects(); });
     list.addEventListener('click', (event) => { const card = event.target.closest('[data-project]'); if (card) openReview(projects[Number(card.dataset.project)], card); });
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !reviewRoot.hidden) closeReview(); });
@@ -560,6 +659,7 @@
     initReveal();
     initCounters();
     initNavSpy();
+    initPet();
   </script>
   <script type="module">
     const panel = document.getElementById('delivery-scene-panel');
