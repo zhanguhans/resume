@@ -3,42 +3,609 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="张玉玺｜项目经理与实施工程师个人主页">
-  <title>张玉玺｜项目经理 / 实施工程师</title>
+  <meta name="description" content="张玉玺，项目经理与 ERP 实施顾问个人主页">
+  <title>张玉玺｜项目经理 / ERP 实施顾问</title>
   <style>
-    :root{--bg:#07111f;--surface:rgba(13,29,49,.72);--text:#f4f8ff;--muted:#9cb0c9;--line:rgba(170,204,242,.16);--primary:#67e8f9;--secondary:#a78bfa;--shadow:0 24px 80px rgba(0,0,0,.26)}
-    body.light{--bg:#edf5ff;--surface:rgba(255,255,255,.78);--text:#10243b;--muted:#536b85;--line:rgba(50,90,130,.18);--primary:#087cbd;--secondary:#7957d5;--shadow:0 24px 80px rgba(27,64,104,.12)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","Noto Sans SC",sans-serif;overflow-x:hidden}.app{isolation:isolate}.stars{position:fixed;inset:0;z-index:-3;pointer-events:none}.orb{position:fixed;border-radius:50%;z-index:-2;pointer-events:none;filter:blur(3px);animation:drift 15s ease-in-out infinite}.orb.a{width:42vw;height:42vw;left:-13vw;top:-14vw;background:radial-gradient(circle,rgba(103,232,249,.18),transparent 68%)}.orb.b{width:38vw;height:38vw;right:-16vw;top:27vh;background:radial-gradient(circle,rgba(167,139,250,.17),transparent 67%);animation-delay:-7s}@keyframes drift{50%{transform:translate(7vw,5vh) scale(1.1)}}.progress{position:fixed;top:0;left:0;z-index:30;height:3px;width:100%;background:linear-gradient(90deg,var(--primary),var(--secondary));transform-origin:left}.container{width:min(1120px,calc(100% - 38px));margin:auto}.nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 76%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.nav-inner{height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font:500 .78rem Consolas,monospace;letter-spacing:.1em;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:10px}.brand i{width:10px;height:10px;border-radius:50%;background:var(--primary);box-shadow:0 0 18px var(--primary)}.nav-links{display:flex;gap:5px;align-items:center}.nav-links a,.theme{border:0;background:none;color:var(--muted);padding:7px 10px;border-radius:7px;text-decoration:none;cursor:pointer;font-size:.82rem}.nav-links a:hover,.theme:hover{background:rgba(255,255,255,.08);color:var(--text)}.theme{border:1px solid var(--line);margin-left:7px}.hero{min-height:625px;display:grid;grid-template-columns:1.3fr .7fr;align-items:center;gap:50px}.eyebrow{color:var(--primary);font:500 .75rem Consolas,monospace;letter-spacing:.13em}.eyebrow:before{content:'';display:inline-block;width:36px;height:1px;background:currentColor;vertical-align:middle;margin-right:10px}.hero h1{font-size:clamp(3.4rem,8vw,7rem);letter-spacing:-.085em;line-height:.98;margin:20px 0}.gradient{display:block;background:linear-gradient(100deg,var(--primary),#d6e8ff 48%,var(--secondary));background-clip:text;-webkit-background-clip:text;color:transparent}.copy{max-width:640px;color:var(--muted);line-height:1.9;font-size:1rem}.actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:28px}.button{border:1px solid var(--line);background:rgba(255,255,255,.04);padding:12px 17px;color:var(--text);border-radius:10px;font-weight:700;font-size:.86rem;text-decoration:none;cursor:pointer;transition:.2s}.button.primary{background:linear-gradient(100deg,var(--primary),#85b7ff);color:#082034;border:0}.button:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.18)}.hero-visual{height:370px;position:relative;display:grid;place-items:center}.orbit{position:absolute;width:310px;height:310px;border:1px solid rgba(103,232,249,.25);border-radius:50%;animation:spin 22s linear infinite}.orbit.two{width:225px;height:225px;border-color:rgba(167,139,250,.3);animation-direction:reverse;animation-duration:14s}.orbit:before{content:'';position:absolute;top:25px;left:50%;width:9px;height:9px;background:var(--primary);border-radius:50%;box-shadow:0 0 18px var(--primary)}@keyframes spin{to{transform:rotate(360deg)}}.core{width:176px;height:176px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(145deg,rgba(103,232,249,.17),rgba(167,139,250,.11));box-shadow:var(--shadow);display:grid;place-content:center;text-align:center;transform:rotate(-8deg)}.core small{font:500 .73rem Consolas,monospace;color:var(--primary);letter-spacing:.1em}.core strong{font-size:2.5rem;margin-top:6px}.section{padding:82px 0}.head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:29px}.kicker{font:500 .73rem Consolas,monospace;color:var(--primary);letter-spacing:.13em}.title{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:-.06em;margin:8px 0 0}.intro{max-width:375px;color:var(--muted);font-size:.88rem;line-height:1.75;margin:0}.grid{display:grid;gap:15px}.stats{grid-template-columns:repeat(3,1fr)}.skills{grid-template-columns:repeat(4,1fr)}.projects{grid-template-columns:repeat(2,1fr)}.card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow);backdrop-filter:blur(14px);transition:transform .2s,border-color .2s,box-shadow .2s;transform-style:preserve-3d}.card:hover{border-color:rgba(103,232,249,.45);box-shadow:0 28px 76px rgba(0,0,0,.34)}.stat{padding:27px}.num{font-size:3rem;font-weight:900;letter-spacing:-.08em;color:var(--primary)}.label{color:var(--muted);font-size:.84rem;margin-top:4px}.detail{font-size:.8rem;line-height:1.7;margin:17px 0 0;color:var(--text)}.skill{padding:23px;min-height:190px}.index,.kind,.date{font:500 .7rem Consolas,monospace;color:var(--primary)}.skill h3{font-size:1.12rem;margin:28px 0 10px}.skill p,.job p,.project p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.75}.timeline{position:relative;display:grid;gap:15px}.timeline:before{content:'';position:absolute;left:21px;top:26px;bottom:26px;width:1px;background:linear-gradient(var(--primary),transparent)}.job{padding:25px 28px 25px 65px}.dot{position:absolute;left:15px;top:31px;width:13px;height:13px;background:var(--primary);border-radius:50%;box-shadow:0 0 0 6px rgba(103,232,249,.1),0 0 18px var(--primary)}.jobtop{display:flex;justify-content:space-between;gap:15px}.job h3{margin:0;font-size:1.1rem}.role{font-size:.83rem;color:var(--secondary);margin:7px 0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.filter{padding:8px 13px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);color:var(--muted);font-size:.8rem;cursor:pointer}.filter.active,.filter:hover{background:var(--primary);border-color:var(--primary);color:#082034}.project{padding:25px;min-height:246px;cursor:pointer}.project:hover .arrow{transform:translate(4px,-4px);color:var(--primary)}.projecttop,.foot{display:flex;justify-content:space-between;gap:10px}.arrow{font-size:1.4rem;transition:.2s}.project h3{margin:22px 0 10px;font-size:1.2rem}.foot{position:absolute;bottom:22px;left:25px;right:25px;padding-top:13px;border-top:1px solid var(--line);font-size:.74rem;color:var(--muted)}.cta{padding:40px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(110deg,rgba(103,232,249,.1),rgba(167,139,250,.1));display:flex;justify-content:space-between;align-items:center;gap:20px}.cta h2{margin:0;letter-spacing:-.05em;font-size:clamp(1.5rem,3vw,2.4rem)}.cta p{color:var(--muted);font-size:.86rem}.footer{padding:30px 0;color:var(--muted);font:500 .7rem Consolas,monospace;display:flex;justify-content:space-between;gap:12px}.backdrop{position:fixed;inset:0;z-index:40;background:rgba(2,7,15,.73);backdrop-filter:blur(10px);display:grid;place-items:center;padding:20px}.modal{max-width:720px;max-height:88vh;overflow:auto;padding:30px;border-radius:20px;border:1px solid rgba(103,232,249,.4);background:#0b1a2d;box-shadow:0 35px 120px rgba(0,0,0,.55)}.modal h2{font-size:1.7rem;line-height:1.4;margin:22px 0}.close{float:right;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:transparent;color:white;cursor:pointer;font-size:1.2rem}.star{display:grid;grid-template-columns:1fr 1fr;gap:11px}.star div{padding:14px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.03)}.star b{font:500 .73rem Consolas,monospace;color:var(--primary)}.star p{color:#b9cbe0;line-height:1.7;font-size:.82rem;margin:7px 0 0}@media(max-width:820px){.nav-links a{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:60px 0}.hero-visual{height:280px;order:-1}.stats{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.head,.cta{align-items:start;flex-direction:column}.section{padding:58px 0}}@media(max-width:520px){.container{width:calc(100% - 28px)}.hero h1{font-size:3.35rem}.skills,.projects,.star{grid-template-columns:1fr}.job{padding:20px 18px 20px 52px}.jobtop{flex-direction:column}.cta{padding:27px}.footer{flex-direction:column}.orbit{width:260px;height:260px}.orbit.two{width:185px;height:185px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}.stars,.orb{display:none}.card{transform:none!important}}
+    :root {
+      color-scheme: dark;
+      --bg: #0d1518;
+      --surface: #162126;
+      --surface-raised: #1b2a2f;
+      --text: #edf7f4;
+      --muted: #9cb4b2;
+      --line: #2b3e42;
+      --accent: #69d6ca;
+      --accent-strong: #a5eee4;
+      --accent-ink: #06201d;
+      --shadow: 0 22px 60px rgba(0, 0, 0, .24);
+      --radius-card: 14px;
+      --radius-control: 8px;
+    }
+
+    body.light {
+      color-scheme: light;
+      --bg: #f3f7f6;
+      --surface: #ffffff;
+      --surface-raised: #e8f1ef;
+      --text: #142b2c;
+      --muted: #607675;
+      --line: #d2e0de;
+      --accent: #087f81;
+      --accent-strong: #075e60;
+      --accent-ink: #f3ffff;
+      --shadow: 0 22px 60px rgba(27, 75, 76, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+      line-height: 1.65;
+      transition: background-color .28s ease, color .28s ease;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    .site-shell { isolation: isolate; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* Cards use one soft radius. Controls use a smaller radius; filters are the only pill shape. */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      font: 700 .76rem Consolas, monospace;
+      letter-spacing: .12em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 11px;
+      height: 11px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent);
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a, .theme {
+      border: 1px solid transparent;
+      border-radius: var(--radius-control);
+      padding: 7px 10px;
+      background: transparent;
+      color: var(--muted);
+      font-size: .82rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a.active, .theme:hover {
+      border-color: var(--line);
+      background: var(--surface);
+      color: var(--text);
+    }
+    .nav-links a.active { color: var(--accent-strong); }
+    .theme { margin-left: 7px; border-color: var(--line); }
+
+    .hero {
+      min-height: min(760px, calc(100dvh - 68px));
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+      align-items: center;
+      gap: 72px;
+      padding: 72px 0 80px;
+    }
+    .eyebrow, .kicker, .index, .kind, .date {
+      color: var(--accent-strong);
+      font: 700 .7rem Consolas, monospace;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--accent); }
+    .hero h1 {
+      max-width: 720px;
+      margin: 22px 0 24px;
+      font-size: 5.35rem;
+      letter-spacing: -.075em;
+      line-height: .98;
+    }
+    .hero h1 span { display: block; color: var(--accent); }
+    .copy {
+      max-width: 620px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-control);
+      padding: 10px 16px;
+      background: var(--surface);
+      color: var(--text);
+      font-size: .84rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .22s cubic-bezier(.16, 1, .3, 1), border-color .22s ease, box-shadow .22s ease, background-color .22s ease;
+    }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+    .button:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 12px 28px color-mix(in srgb, var(--accent) 18%, transparent); }
+    .button:active, .filter:active, .theme:active { transform: translateY(1px) scale(.98); }
+
+    .delivery-map {
+      position: relative;
+      min-height: 360px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-card);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .scene-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: auto;
+      transition: opacity .45s ease;
+    }
+    .delivery-map[data-three-ready="true"] .scene-canvas { opacity: .9; }
+    .delivery-map[data-three-ready="true"] .map-fallback { opacity: .14; }
+    .scene-css {
+      position: absolute;
+      top: 82px;
+      right: 20px;
+      z-index: 1;
+      width: 190px;
+      height: 190px;
+      perspective: 700px;
+      pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .delivery-map[data-three-ready="true"] .scene-css { opacity: .08; }
+    .scene-orbit { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(58deg) rotateZ(-12deg); }
+    .scene-orbit::before { content: ""; position: absolute; inset: 22px; border: 1px solid var(--accent); border-radius: 50%; opacity: .25; transform: translateZ(-18px); }
+    .scene-block { position: absolute; width: 46px; height: 46px; transform-style: preserve-3d; animation: block-float 4.5s ease-in-out infinite; }
+    .scene-block:nth-child(1) { top: 93px; left: 10px; animation-delay: -.6s; }
+    .scene-block:nth-child(2) { top: 38px; left: 93px; animation-delay: -1.5s; }
+    .scene-block:nth-child(3) { top: 93px; right: 10px; animation-delay: -2.4s; }
+    .scene-face { position: absolute; width: 46px; height: 46px; border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--line)); background: color-mix(in srgb, var(--accent) 20%, var(--surface)); box-shadow: inset 0 0 20px color-mix(in srgb, var(--accent) 12%, transparent); opacity: .9; }
+    .scene-face.front { transform: translateZ(23px); }
+    .scene-face.back { transform: rotateY(180deg) translateZ(23px); }
+    .scene-face.right { transform: rotateY(90deg) translateZ(23px); }
+    .scene-face.left { transform: rotateY(-90deg) translateZ(23px); }
+    .scene-face.top { transform: rotateX(90deg) translateZ(23px); background: color-mix(in srgb, var(--accent) 34%, var(--surface)); }
+    .scene-face.bottom { transform: rotateX(-90deg) translateZ(23px); }
+    .scene-link { position: absolute; top: 113px; left: 49px; width: 133px; height: 1px; background: var(--accent); opacity: .55; transform: translateZ(-1px); }
+    .scene-link::after { content: ""; position: absolute; top: -28px; left: 66px; width: 1px; height: 29px; background: var(--accent); transform: rotate(36deg); transform-origin: bottom; }
+    @keyframes block-float { 50% { transform: translateZ(13px) translateY(-4px); } }
+    @media (prefers-reduced-motion: reduce) { .scene-block { animation: none; } }
+    .map-fallback { position: relative; z-index: 1; transition: opacity .35s ease; }
+    .scene-note { position: absolute; right: 24px; bottom: 20px; z-index: 2; color: var(--muted); font: 700 .63rem Consolas, monospace; letter-spacing: .08em; opacity: 0; transition: opacity .3s ease; }
+    .delivery-map[data-three-ready="true"] .scene-note { opacity: .9; }
+    .delivery-map::before { display: none; }
+    .map-label { color: var(--muted); font-size: .76rem; }
+    .map-title { max-width: 165px; margin: 10px 0 0; font-size: 1.35rem; line-height: 1.3; }
+    .map-nodes { display: none; }
+    .map-node { position: relative; display: grid; gap: 10px; justify-items: center; color: var(--muted); font: 700 .67rem Consolas, monospace; }
+    .map-node::before { content: ""; width: 18px; height: 18px; border: 2px solid var(--accent); border-radius: 50%; background: var(--surface); box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 12%, transparent); }
+    .map-node:last-child { color: var(--accent-strong); }
+    .map-node:last-child::before { background: var(--accent); }
+    .map-steps { display: grid; gap: 14px; margin-top: 78px; }
+    .map-step { display: grid; grid-template-columns: 32px 1fr; gap: 12px; align-items: center; padding-top: 13px; border-top: 1px solid var(--line); }
+    .map-step b { color: var(--accent); font: 700 .7rem Consolas, monospace; }
+    .map-step span { color: var(--muted); font-size: .82rem; }
+
+    .section { padding: 84px 0; }
+    .section-head { max-width: 720px; margin-bottom: 30px; }
+    .title { margin: 8px 0 0; font-size: 3rem; letter-spacing: -.06em; line-height: 1.12; }
+    .intro { max-width: 620px; margin: 13px 0 0; color: var(--muted); font-size: .9rem; }
+    .grid { display: grid; gap: 15px; }
+    .stats { grid-template-columns: 1.2fr .9fr .9fr; }
+    .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: minmax(190px, 1fr); align-items: stretch; }
+    .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); box-shadow: var(--shadow); transition: transform .25s cubic-bezier(.16, 1, .3, 1), border-color .22s ease, box-shadow .22s ease; transform-style: preserve-3d; }
+    .card:hover { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); box-shadow: 0 26px 70px color-mix(in srgb, var(--accent) 11%, transparent); }
+    .stat { min-height: 188px; padding: 27px; }
+    .stat:first-child { background: var(--surface-raised); }
+    .num { color: var(--accent); font-size: 3.2rem; font-weight: 900; letter-spacing: -.08em; line-height: 1; }
+    .label { margin-top: 8px; color: var(--muted); font-size: .82rem; }
+    .detail { margin: 19px 0 0; color: var(--text); font-size: .82rem; line-height: 1.7; }
+    .skill { min-height: 190px; height: 100%; padding: 25px; }
+    .skill h3 { margin: 26px 0 9px; font-size: 1.12rem; }
+    .skill p, .job p, .project p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.75; }
+    .timeline { position: relative; display: grid; gap: 15px; }
+    .timeline::before { content: ""; position: absolute; top: 29px; bottom: 29px; left: 22px; width: 1px; background: var(--line); }
+    .job { padding: 26px 28px 26px 66px; }
+    .job-dot { position: absolute; top: 30px; left: 16px; width: 13px; height: 13px; border: 3px solid var(--surface); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .jobtop { display: flex; justify-content: space-between; gap: 15px; }
+    .job h3 { margin: 0; font-size: 1.12rem; }
+    .role { margin: 7px 0 0; color: var(--accent-strong); font-size: .84rem; }
+    .date { white-space: nowrap; letter-spacing: .05em; }
+    .job p { margin-top: 17px; max-width: 900px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 17px; }
+    .filter { border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; background: transparent; color: var(--muted); font-size: .8rem; cursor: pointer; transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }
+    .filter.active, .filter:hover { border-color: var(--accent); background: var(--accent); color: var(--accent-ink); }
+    .project { width: 100%; min-height: 254px; padding: 25px; text-align: left; cursor: pointer; }
+    .projecttop, .foot { display: flex; justify-content: space-between; gap: 12px; }
+    .arrow { color: var(--muted); font-size: 1.3rem; transition: transform .22s ease, color .22s ease; }
+    .project:hover .arrow { transform: translate(3px, -3px); color: var(--accent); }
+    .project-title { display: block; margin: 24px 0 10px; color: var(--text); font-size: 1.22rem; font-weight: 700; line-height: 1.4; }
+    .project-summary { display: block; color: var(--muted); font-size: .84rem; line-height: 1.75; }
+    .foot { position: absolute; right: 25px; bottom: 20px; left: 25px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: .73rem; }
+    .empty-state { grid-column: 1 / -1; margin: 0; padding: 28px; border: 1px dashed var(--line); border-radius: var(--radius-card); color: var(--muted); }
+    .cta { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 24px 0 18px; padding: 36px; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface-raised); }
+    .cta h2 { margin: 0; font-size: 2.25rem; letter-spacing: -.05em; line-height: 1.2; }
+    .cta p { margin: 8px 0 0; color: var(--muted); font-size: .86rem; }
+    .footer { display: flex; justify-content: space-between; gap: 14px; padding: 25px 0 34px; color: var(--muted); font: 700 .68rem Consolas, monospace; letter-spacing: .04em; }
+
+    .project-review { grid-column: 1 / -1; margin-top: 1px; padding: 28px; border: 1px solid var(--accent); border-radius: var(--radius-card); background: var(--surface-raised); box-shadow: var(--shadow); }
+    .project-review[hidden] { display: none; }
+    .review-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .review-kicker { color: var(--accent-strong); font: 700 .7rem Consolas, monospace; letter-spacing: .12em; text-transform: uppercase; }
+    .review-title { margin: 8px 0 0; font-size: 1.75rem; line-height: 1.3; }
+    .review-meta { margin: 7px 0 0; color: var(--muted); font-size: .82rem; }
+    .review-close { flex: 0 0 auto; min-height: 38px; border: 1px solid var(--line); border-radius: var(--radius-control); padding: 7px 12px; background: var(--surface); color: var(--muted); cursor: pointer; transition: border-color .2s ease, color .2s ease, transform .2s ease; }
+    .review-close:hover { border-color: var(--accent); color: var(--text); }
+    .review-close:active { transform: translateY(1px) scale(.98); }
+    .review-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; margin-top: 19px; }
+    .review-item { min-height: 118px; padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface); }
+    .review-item b { color: var(--accent-strong); font: 700 .72rem Consolas, monospace; }
+    .review-item p { margin: 8px 0 0; color: var(--muted); font-size: .84rem; line-height: 1.75; }
+    .star { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+    .star div { padding: 15px; border: 1px solid var(--line); border-radius: var(--radius-control); background: var(--surface-raised); }
+    .star b { color: var(--accent-strong); font: 700 .72rem Consolas, monospace; }
+    .star p { margin: 8px 0 0; color: var(--muted); font-size: .83rem; line-height: 1.75; }
+    .button:focus-visible, .filter:focus-visible, .project:focus-visible, .theme:focus-visible, .close:focus-visible, .nav-links a:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 60%, white); outline-offset: 3px; }
+
+    body.reveal-enabled .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.16, 1, .3, 1), transform .7s cubic-bezier(.16, 1, .3, 1); }
+    body.reveal-enabled .reveal.is-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .delivery-map { animation: hero-enter .75s cubic-bezier(.16, 1, .3, 1) both; }
+      .map-node:last-child::before { animation: node-pulse 2.4s ease-in-out infinite; }
+      @keyframes hero-enter { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+      @keyframes node-pulse { 50% { box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 5%, transparent); } }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+      body.reveal-enabled .reveal { opacity: 1; transform: none; transition: none; }
+      .card, .button { transition: none; transform: none !important; }
+    }
+    @media (prefers-reduced-transparency: reduce) { .nav { backdrop-filter: none; } }
+    @media (max-width: 820px) {
+      .nav-links a { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 36px; padding: 56px 0 64px; }
+      .delivery-map { order: -1; min-height: 300px; }
+      .stats { grid-template-columns: 1fr; }
+      .skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section { padding: 64px 0; }
+    }
+    @media (max-width: 560px) {
+      .container { width: calc(100% - 28px); }
+      .hero h1 { font-size: 3.25rem; }
+      .title { font-size: 2.35rem; }
+      .skills, .projects, .star, .review-grid { grid-template-columns: 1fr; }
+      .job { padding: 22px 18px 22px 52px; }
+      .jobtop, .cta { align-items: flex-start; flex-direction: column; }
+      .cta { padding: 27px; }
+      .cta h2 { font-size: 1.85rem; }
+      .project-review { padding: 22px 18px; }
+      .review-head { flex-direction: column; }
+      .review-title { font-size: 1.45rem; }
+      .footer { flex-direction: column; }
+      .scene-css { right: 16px; width: 160px; }
+      .map-title { max-width: 145px; }
+      .map-steps { margin-top: 78px; }
+    }
   </style>
 </head>
 <body>
-  <div class="app"><canvas id="stars" class="stars"></canvas><i class="orb a"></i><i class="orb b"></i><div id="progress" class="progress"></div>
-    <nav class="nav"><div class="container nav-inner"><a class="brand" href="#intro"><i></i>ZYX / PORTFOLIO</a><div class="nav-links"><a href="#intro">概览</a><a href="#skills">能力</a><a href="#experience">经历</a><a href="#projects">项目</a><button id="theme" class="theme">◐ 浅色</button></div></div></nav>
-    <main class="container"><section id="intro" class="hero"><div><div class="eyebrow">PROJECT DELIVERY / 2026</div><h1>让复杂项目，<span class="gradient">稳定落地。</span></h1><p class="copy">两年以上企业级系统实施与项目管理经验。以技术理解为底座，以业务结果为导向，连接客户、实施顾问与研发团队，交付真正能推动业务增长的数字化系统。</p><div class="actions"><a class="button primary" href="#projects">查看项目案例 ↓</a><a class="button" href="mailto:zyx1487620818@gmail.com">联系我 ↗</a></div></div><div class="hero-visual"><i class="orbit"></i><i class="orbit two"></i><div class="core"><small>PROJECT</small><strong>ZYX</strong></div></div></section>
-      <section class="grid stats"><article class="card stat"><div class="num" data-count="6">0+</div><div class="label">企业级项目交付</div><p class="detail">从需求调研到上线运营的完整交付经验</p></article><article class="card stat"><div class="num" data-count="3">0+</div><div class="label">深耕行业领域</div><p class="detail">物流供应链、光伏制造、服装零售</p></article><article class="card stat"><div class="num" data-count="3">0+</div><div class="label">年项目实践</div><p class="detail">从研发工程师成长为项目统筹</p></article></section>
-      <section id="skills" class="section"><div class="head"><div><div class="kicker">CAPABILITIES</div><h2 class="title">把业务语言，翻译成系统能力。</h2></div><p class="intro">既能站在一线梳理场景，也能深入理解接口、数据和技术约束。</p></div><div class="grid skills"><article class="card skill"><b class="index">01 / PM</b><h3>项目管理</h3><p>端到端交付：调研、方案、进度管控与多方协同；熟悉 ERP 实施方法论。</p></article><article class="card skill"><b class="index">02 / BIZ</b><h3>业务领域</h3><p>ERP、OMS / TMS / BMS、SCRM 会员管理与国际物流报关。</p></article><article class="card skill"><b class="index">03 / TECH</b><h3>技术背景</h3><p>Java / Spring Boot、Oracle PL/SQL、MySQL、Redis。</p></article><article class="card skill"><b class="index">04 / TOOLS</b><h3>工具平台</h3><p>阿里云、腾讯云、Git、Linux，以及 AI 工具项目化使用。</p></article></div></section>
-      <section id="experience" class="section"><div class="head"><div><div class="kicker">EXPERIENCE</div><h2 class="title">从技术现场，到交付全局。</h2></div></div><div class="timeline"><article class="card job"><i class="dot"></i><div class="jobtop"><div><h3>云南伯俊科技有限公司</h3><div class="role">实施顾问 → 项目经理</div></div><b class="date">2025.03 — 至今</b></div><p>承担零售 ERP 实施与项目统筹，独立主导客户调研、方案设计和落地交付；同时负责 Oracle PL/SQL 开发及 SCRM 会员系统实施。</p></article><article class="card job"><i class="dot"></i><div class="jobtop"><div><h3>湖北普罗格科技集团</h3><div class="role">研发工程师 → 实施顾问</div></div><b class="date">2023.10 — 2024.11</b></div><p>负责 OMS、TMS、BMS 标准产品的客户实施，覆盖需求对接、接口开发、系统联调和上线交付全流程。</p></article></div></section>
-      <section id="projects" class="section"><div class="head"><div><div class="kicker">SELECTED WORK</div><h2 class="title">项目，不止是按期上线。</h2></div><p class="intro">点击案例，查看以 STAR 方法拆解的项目交付过程。</p></div><div id="filters" class="filters"></div><div id="project-list" class="grid projects"></div></section>
-      <section class="cta"><div><h2>期待下一次复杂问题，<br>成为一次漂亮交付。</h2><p>欢迎交流 ERP 实施、系统集成与项目管理机会。</p></div><a class="button primary" href="mailto:zyx1487620818@gmail.com">发起联系 ↗</a></section><footer class="footer"><span>© 2026 ZHANG YUXI</span><span>PROJECT MANAGER / IMPLEMENTATION ENGINEER</span></footer>
-    </main></div><div id="modal-root"></div>
+  <div class="site-shell">
+    <nav class="nav" aria-label="主导航">
+      <div class="container nav-inner">
+        <a class="brand" href="#intro"><span class="brand-mark" aria-hidden="true"></span>ZYX / PORTFOLIO</a>
+        <div class="nav-links">
+          <a href="#intro">概览</a><a href="#skills">能力</a><a href="#experience">经历</a><a href="#projects">项目</a>
+          <button id="theme" class="theme" type="button" aria-pressed="false">◐ 浅色</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section id="intro" class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">PROJECT DELIVERY / ERP IMPLEMENTATION</div>
+          <h1>让复杂项目，<span>稳定落地。</span></h1>
+          <p class="copy">两年以上企业级系统实施与项目管理经验。以技术理解为底座，以业务结果为导向，连接客户、实施顾问与研发团队，交付真正能推动业务增长的数字化系统。</p>
+          <div class="actions"><a class="button primary" href="#projects">查看项目案例</a><a class="button" href="mailto:zyx1487620818@gmail.com">联系我 ↗</a></div>
+        </div>
+        <div class="delivery-map" id="delivery-scene-panel" aria-label="项目交付路径三维模型">
+          <canvas class="scene-canvas" id="delivery-scene" aria-label="三维项目交付流程模型"></canvas>
+          <div class="scene-css" aria-hidden="true"><div class="scene-orbit"><span class="scene-link"></span><div class="scene-block"><i class="scene-face front"></i><i class="scene-face back"></i><i class="scene-face right"></i><i class="scene-face left"></i><i class="scene-face top"></i><i class="scene-face bottom"></i></div><div class="scene-block"><i class="scene-face front"></i><i class="scene-face back"></i><i class="scene-face right"></i><i class="scene-face left"></i><i class="scene-face top"></i><i class="scene-face bottom"></i></div><div class="scene-block"><i class="scene-face front"></i><i class="scene-face back"></i><i class="scene-face right"></i><i class="scene-face left"></i><i class="scene-face top"></i><i class="scene-face bottom"></i></div></div></div>
+          <div class="map-fallback">
+            <span class="map-label">DELIVERY MAP</span>
+            <h2 class="map-title">把需求、系统和团队，串成一条可交付的路径。</h2>
+            <div class="map-nodes" aria-hidden="true"><span class="map-node">调研</span><span class="map-node">配置</span><span class="map-node">上线</span></div>
+            <div class="map-steps"><div class="map-step"><b>01</b><span>明确业务目标与切换边界</span></div><div class="map-step"><b>02</b><span>协调接口、数据与关键角色</span></div><div class="map-step"><b>03</b><span>完成验收并进入持续支持</span></div></div>
+          </div>
+          <span class="scene-note">3D DELIVERY MODEL / INTERACTIVE</span>
+        </div>
+      </section>
+
+      <section class="grid stats reveal" aria-label="项目经验概览">
+        <article class="card stat"><div class="num" data-count="6">0+</div><div class="label">企业级项目交付</div><p class="detail">从需求调研到上线运营的完整交付经验。</p></article>
+        <article class="card stat"><div class="num" data-count="3">0+</div><div class="label">深耕行业领域</div><p class="detail">物流供应链、光伏制造、服装零售。</p></article>
+        <article class="card stat"><div class="num" data-count="3">0+</div><div class="label">年项目实践</div><p class="detail">从研发工程师成长为项目统筹。</p></article>
+      </section>
+
+      <section id="skills" class="section reveal"><div class="section-head"><div class="kicker">CAPABILITIES</div><h2 class="title">把业务语言，翻译成系统能力。</h2><p class="intro">既能站在一线梳理场景，也能深入理解接口、数据和技术约束。</p></div><div class="grid skills"><article class="card skill"><b class="index">PROJECT MANAGEMENT</b><h3>项目管理</h3><p>端到端交付：调研、方案、进度管控与多方协同。熟悉 ERP 实施方法论。</p></article><article class="card skill"><b class="index">BUSINESS</b><h3>业务领域</h3><p>ERP、OMS / TMS / BMS、SCRM 会员管理与国际物流报关。</p></article><article class="card skill"><b class="index">TECHNOLOGY</b><h3>技术背景</h3><p>Java / Spring Boot、Oracle PL/SQL、MySQL、Redis。</p></article><article class="card skill"><b class="index">TOOLS</b><h3>工具平台</h3><p>阿里云、腾讯云、Git、Linux，以及 AI 工具项目化使用。</p></article></div></section>
+
+      <section id="experience" class="section reveal"><div class="section-head"><div class="kicker">EXPERIENCE</div><h2 class="title">从技术现场，到交付全局。</h2></div><div class="timeline"><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>云南伯俊科技有限公司</h3><div class="role">实施顾问 → 项目经理</div></div><b class="date">2025.03 - 至今</b></div><p>承担零售 ERP 实施与项目统筹，独立主导客户调研、方案设计和落地交付。同时负责 Oracle PL/SQL 开发及 SCRM 会员系统实施。</p></article><article class="card job"><i class="job-dot" aria-hidden="true"></i><div class="jobtop"><div><h3>湖北普罗格科技集团</h3><div class="role">研发工程师 → 实施顾问</div></div><b class="date">2023.10 - 2024.11</b></div><p>负责 OMS、TMS、BMS 标准产品的客户实施，覆盖需求对接、接口开发、系统联调和上线交付全流程。</p></article></div></section>
+
+      <section id="projects" class="section reveal"><div class="section-head"><div class="kicker">SELECTED WORK</div><h2 class="title">项目，不止是按期上线。</h2><p class="intro">按角色筛选项目，点击卡片在页面内展开完整复盘。</p></div><div id="filters" class="filters" role="group" aria-label="项目筛选"></div><div id="project-list" class="grid projects" aria-live="polite"></div><div id="project-review" class="project-review" role="region" aria-label="项目复盘" hidden aria-live="polite"></div></section>
+      <section class="cta reveal"><div><h2>期待下一次复杂问题，成为一次漂亮交付。</h2><p>欢迎交流 ERP 实施、系统集成与项目管理机会。</p></div><a class="button primary" href="mailto:zyx1487620818@gmail.com">发起联系 ↗</a></section>
+      <footer class="footer"><span>© 2026 ZHANG YUXI</span><span>PROJECT MANAGER / ERP IMPLEMENTATION CONSULTANT</span></footer>
+    </main>
+  </div>
   <script>
-    const projects=[
-      {title:'艾维华山集团',date:'2026.06 — 2026.07',role:'项目统筹',category:'统筹',summary:'ERP 全链路实施与智简云 SCRM 搭建，推动业务、财务、会员数据闭环。',S:'云南省大型服装零售集团，多品牌运营，业务与会员数据割裂。',T:'统筹 ERP、私域 SCRM 商城与会员系统的一站式交付。',A:'并行推进 ERP 部署、Oracle 开发、智简云系统搭建和多端数据互通。',R:'实现业务—财务—会员全链路闭环，完成多品牌会员体系迁移。'},
-      {title:'度嘉班妮',date:'2026.03 — 2026.04',role:'项目负责人',category:'负责人',summary:'有赞会员商城平滑切换，完成数万条会员数据跨平台迁移。',S:'会员体系基于达摩与微盟，需迁移至有赞且服务不能中断。',T:'独立负责全流程，确保数据准确、切换过程稳定。',A:'制定切换方案，完成清洗、迁移、校验及多方接口适配。',R:'两个月交付，数万条会员档案、积分与权益精准迁移。'},
-      {title:'云南红绶带',date:'2025.11 — 2025.12',role:'项目负责人',category:'负责人',summary:'从零交付 ERP 与会员系统，建立服装零售数字化基础体系。',S:'客户业务流程全人工，缺少 ERP 和会员管理能力。',T:'两个月内完成 ERP 部署、业务配置及会员系统上线。',A:'完成核心模块开发、业务流程配置、数据初始化与对接联调。',R:'ERP 和会员系统按期上线，形成运营数字化闭环。'},
-      {title:'云南圣弗兰',date:'2025.10 — 2025.11',role:'项目负责人',category:'负责人',summary:'完成 ERP 切换及商城、会员等异构系统的数据接口打通。',S:'ERP 需切换，同时对接微盟商城和达摩会员系统。',T:'在两个月内完成切换，确保业务过程不中断。',A:'实现商品、订单、库存实时同步，处理会员接口迁移及数据映射。',R:'三套系统成功打通，ERP 平稳切换。'},
-      {title:'通威太阳能集团',date:'2024',role:'驻场实施',category:'实施',summary:'TMS/BMS 系统落地，独立完成 DHL 快递和报关流程系统化。',S:'运输结算依赖线下，国际物流缺少 DHL 对接，报关数据分散。',T:'驻场交付系统，并承担 DHL 接口与报关流程开发。',A:'梳理核心流程，完成接口设计、联调和报关数据同步。',R:'系统按期投产，DHL 实现下单、追踪、回执全链路自动化。'}
+    const projects = [
+      {title: '艾维华山集团', date: '2026.06 - 2026.07', role: '项目统筹', category: '统筹', summary: 'ERP 全链路实施与智简云 SCRM 搭建，推动业务、财务、会员数据闭环。', S: '云南省大型服装零售集团，多品牌运营，业务与会员数据割裂。', T: '统筹 ERP、私域 SCRM 商城与会员系统的一站式交付。', A: '并行推进 ERP 部署、Oracle 开发、智简云系统搭建和多端数据互通。', R: '实现业务、财务、会员全链路闭环，完成多品牌会员体系迁移。'},
+      {title: '度嘉班妮', date: '2026.03 - 2026.04', role: '项目负责人', category: '负责人', summary: '有赞会员商城平滑切换，完成数万条会员数据跨平台迁移。', S: '会员体系基于达摩与微盟，需迁移至有赞且服务不能中断。', T: '独立负责全流程，确保数据准确、切换过程稳定。', A: '制定切换方案，完成清洗、迁移、校验及多方接口适配。', R: '两个月交付，数万条会员档案、积分与权益精准迁移。'},
+      {title: '云南红绶带', date: '2025.11 - 2025.12', role: '项目负责人', category: '负责人', summary: '从零交付 ERP 与会员系统，建立服装零售数字化基础体系。', S: '客户业务流程全人工，缺少 ERP 和会员管理能力。', T: '两个月内完成 ERP 部署、业务配置及会员系统上线。', A: '完成核心模块开发、业务流程配置、数据初始化与对接联调。', R: 'ERP 和会员系统按期上线，形成运营数字化闭环。'},
+      {title: '云南圣弗兰', date: '2025.10 - 2025.11', role: '项目负责人', category: '负责人', summary: '完成 ERP 切换及商城、会员等异构系统的数据接口打通。', S: 'ERP 需切换，同时对接微盟商城和达摩会员系统。', T: '在两个月内完成切换，确保业务过程不中断。', A: '实现商品、订单、库存实时同步，处理会员接口迁移及数据映射。', R: '三套系统成功打通，ERP 平稳切换。'},
+      {title: '通威太阳能集团', date: '2024', role: '驻场实施', category: '实施', summary: 'TMS / BMS 系统落地，独立完成 DHL 快递和报关流程系统化。', S: '运输结算依赖线下，国际物流缺少 DHL 对接，报关数据分散。', T: '驻场交付系统，并承担 DHL 接口与报关流程开发。', A: '梳理核心流程，完成接口设计、联调和报关数据同步。', R: '系统按期投产，DHL 实现下单、追踪、回执全链路自动化。'}
     ];
-    const filters=['全部','统筹','负责人','实施'];let selectedFilter='全部';
-    const list=document.getElementById('project-list'),filterRoot=document.getElementById('filters'),modalRoot=document.getElementById('modal-root');
-    function renderProjects(){filterRoot.innerHTML=filters.map(filter=>`<button class="filter ${filter===selectedFilter?'active':''}" data-filter="${filter}">${filter}</button>`).join('');const visible=selectedFilter==='全部'?projects:projects.filter(project=>project.category===selectedFilter);list.innerHTML=visible.map((project,index)=>`<article class="card project" data-project="${projects.indexOf(project)}"><div class="projecttop"><b class="kind">${project.role}</b><span class="arrow">↗</span></div><h3>${project.title}</h3><p>${project.summary}</p><div class="foot"><span>${project.date}</span><b class="kind">VIEW CASE</b></div></article>`).join('');bindTilt();}
-    function openModal(project){modalRoot.innerHTML=`<div class="backdrop"><section class="modal" role="dialog" aria-modal="true" aria-label="${project.title}项目详情"><button class="close" aria-label="关闭">×</button><b class="kind">${project.role} · ${project.date}</b><h2>${project.title}｜项目复盘</h2><div class="star">${[['S','情境'],['T','任务'],['A','行动'],['R','成果']].map(([key,label])=>`<div><b>${key} / ${label}</b><p>${project[key]}</p></div>`).join('')}</div></section></div>`;modalRoot.querySelector('.close').focus();}
-    filterRoot.addEventListener('click',event=>{const button=event.target.closest('[data-filter]');if(!button)return;selectedFilter=button.dataset.filter;renderProjects();});list.addEventListener('click',event=>{const card=event.target.closest('[data-project]');if(card)openModal(projects[card.dataset.project]);});modalRoot.addEventListener('click',event=>{if(event.target.classList.contains('backdrop')||event.target.classList.contains('close'))modalRoot.innerHTML='';});addEventListener('keydown',event=>{if(event.key==='Escape')modalRoot.innerHTML='';});
-    function bindTilt(){document.querySelectorAll('.card').forEach(card=>{card.onpointermove=event=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const rect=card.getBoundingClientRect();card.style.transform=`perspective(900px) rotateX(${((event.clientY-rect.top)/rect.height-.5)*-5}deg) rotateY(${((event.clientX-rect.left)/rect.width-.5)*5}deg) translateY(-3px)`};card.onpointerleave=()=>card.style.transform='';});}renderProjects();bindTilt();
-    document.getElementById('theme').addEventListener('click',event=>{document.body.classList.toggle('light');event.target.textContent=document.body.classList.contains('light')?'◑ 深色':'◐ 浅色';});
-    const countObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;const element=entry.target,target=Number(element.dataset.count),start=performance.now();const animate=time=>{const progress=Math.min((time-start)/750,1);element.textContent=Math.round(target*(1-Math.pow(1-progress,3)))+'+';if(progress<1)requestAnimationFrame(animate)};requestAnimationFrame(animate);countObserver.unobserve(element)}),{threshold:.55});document.querySelectorAll('[data-count]').forEach(element=>countObserver.observe(element));
-    addEventListener('scroll',()=>{const total=document.body.scrollHeight-innerHeight;document.getElementById('progress').style.transform=`scaleX(${total?scrollY/total:0})`},{passive:true});
-    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const canvas=document.getElementById('stars'),context=canvas.getContext('2d'),stars=Array.from({length:52},()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*1.3+.25,v:Math.random()*.12+.03,p:Math.random()*6.28}));const resize=()=>{canvas.width=innerWidth;canvas.height=innerHeight};const draw=time=>{context.clearRect(0,0,canvas.width,canvas.height);stars.forEach(star=>{star.y-=star.v;if(star.y<0)star.y=innerHeight;context.fillStyle=`rgba(159,222,255,${.14+Math.sin(time*.001+star.p)*.1})`;context.beginPath();context.arc(star.x,star.y,star.r,0,6.28);context.fill()});requestAnimationFrame(draw)};resize();addEventListener('resize',resize,{passive:true});requestAnimationFrame(draw);}
+    const filterItems = ['全部', '统筹', '负责人', '实施'];
+    const list = document.getElementById('project-list');
+    const filters = document.getElementById('filters');
+    const reviewRoot = document.getElementById('project-review');
+    const themeButton = document.getElementById('theme');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let selectedFilter = '全部';
+    let lastFocused = null;
+
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'}[character]));
+
+    function tilt(card) {
+      card.addEventListener('pointermove', (event) => {
+        if (prefersReducedMotion.matches) return;
+        const rect = card.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        card.style.transform = `perspective(900px) rotateX(${y * -4}deg) rotateY(${x * 4}deg) translateY(-3px)`;
+      });
+      card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+    }
+
+    function renderProjects() {
+      filters.innerHTML = filterItems.map((filter) => `<button class="filter ${filter === selectedFilter ? 'active' : ''}" type="button" data-filter="${filter}" aria-pressed="${filter === selectedFilter}">${filter}</button>`).join('');
+      const visible = selectedFilter === '全部' ? projects : projects.filter((project) => project.category === selectedFilter);
+      if (!visible.length) { list.innerHTML = '<p class="empty-state">当前筛选暂无项目。</p>'; return; }
+      list.innerHTML = visible.map((project) => `<button class="card project" type="button" data-project="${projects.indexOf(project)}"><span class="projecttop"><b class="kind">${escapeHtml(project.role)}</b><span class="arrow" aria-hidden="true">↗</span></span><span class="project-title">${escapeHtml(project.title)}</span><span class="project-summary">${escapeHtml(project.summary)}</span><span class="foot"><span>${escapeHtml(project.date)}</span><b class="kind">VIEW CASE</b></span></button>`).join('');
+      list.querySelectorAll('.card').forEach(tilt);
+    }
+
+    function closeReview(restoreFocus = true) {
+      reviewRoot.hidden = true;
+      reviewRoot.innerHTML = '';
+      if (restoreFocus && lastFocused) lastFocused.focus();
+      lastFocused = null;
+    }
+
+    function openReview(project, trigger) {
+      lastFocused = trigger;
+      reviewRoot.innerHTML = `<div class="review-head"><div><div class="review-kicker">PROJECT REVIEW</div><h3 class="review-title">${escapeHtml(project.title)}</h3><p class="review-meta">${escapeHtml(project.role)} · ${escapeHtml(project.date)}</p></div><button class="review-close" type="button">收起复盘</button></div><div class="review-grid">${[['S', '情境'], ['T', '任务'], ['A', '行动'], ['R', '成果']].map(([key, label]) => `<article class="review-item"><b>${key} / ${label}</b><p>${escapeHtml(project[key])}</p></article>`).join('')}</div>`;
+      reviewRoot.hidden = false;
+      reviewRoot.querySelector('.review-close').addEventListener('click', () => closeReview());
+      reviewRoot.scrollIntoView({behavior: prefersReducedMotion.matches ? 'auto' : 'smooth', block: 'nearest'});
+      reviewRoot.querySelector('.review-close').focus({preventScroll: true});
+    }
+
+    function initReveal() {
+      const revealItems = [...document.querySelectorAll('.reveal')];
+      document.body.classList.add('reveal-enabled');
+      const showInitial = () => revealItems.forEach((item) => { if (item.getBoundingClientRect().top < window.innerHeight * .92) item.classList.add('is-visible'); });
+      if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) { revealItems.forEach((item) => item.classList.add('is-visible')); return; }
+      showInitial();
+      const observer = new IntersectionObserver((entries, currentObserver) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); currentObserver.unobserve(entry.target); } }), {threshold: .15});
+      revealItems.filter((item) => !item.classList.contains('is-visible')).forEach((item) => observer.observe(item));
+    }
+
+    function initCounters() {
+      const counters = document.querySelectorAll('[data-count]');
+      const setFinal = (element) => { element.textContent = `${element.dataset.count}+`; };
+      if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) { counters.forEach(setFinal); return; }
+      const observer = new IntersectionObserver((entries, currentObserver) => entries.forEach((entry) => {
+        if (!entry.isIntersecting || entry.target.dataset.counted) return;
+        const element = entry.target;
+        element.dataset.counted = 'true';
+        const target = Number(element.dataset.count);
+        const start = performance.now();
+        const animate = (now) => { const progress = Math.min((now - start) / 650, 1); element.textContent = `${Math.round(target * (1 - Math.pow(1 - progress, 3)))}+`; if (progress < 1) requestAnimationFrame(animate); };
+        requestAnimationFrame(animate);
+        currentObserver.unobserve(element);
+      }), {threshold: .55});
+      counters.forEach((counter) => observer.observe(counter));
+    }
+
+    function initTheme() {
+      let savedTheme = '';
+      try { savedTheme = localStorage.getItem('zyx-theme') || ''; } catch (error) { savedTheme = ''; }
+      const light = savedTheme === 'light';
+      document.body.classList.toggle('light', light);
+      themeButton.textContent = light ? '◐ 深色' : '◑ 浅色';
+      themeButton.setAttribute('aria-pressed', String(light));
+      themeButton.addEventListener('click', () => {
+        const nextLight = !document.body.classList.contains('light');
+        document.body.classList.toggle('light', nextLight);
+        themeButton.textContent = nextLight ? '◐ 深色' : '◑ 浅色';
+        themeButton.setAttribute('aria-pressed', String(nextLight));
+        try { localStorage.setItem('zyx-theme', nextLight ? 'light' : 'dark'); } catch (error) { /* file URLs may disable storage */ }
+      });
+    }
+
+    function initNavSpy() {
+      const links = [...document.querySelectorAll('.nav-links a')];
+      const sections = links.map((link) => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      if (!('IntersectionObserver' in window)) return;
+      const observer = new IntersectionObserver((entries) => entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((link) => { const active = link.getAttribute('href') === `#${entry.target.id}`; link.classList.toggle('active', active); if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+      }), {rootMargin: '-30% 0px -58% 0px', threshold: 0});
+      sections.forEach((section) => observer.observe(section));
+    }
+
+    filters.addEventListener('click', (event) => { const button = event.target.closest('[data-filter]'); if (!button) return; selectedFilter = button.dataset.filter; closeReview(false); renderProjects(); });
+    list.addEventListener('click', (event) => { const card = event.target.closest('[data-project]'); if (card) openReview(projects[Number(card.dataset.project)], card); });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && !reviewRoot.hidden) closeReview(); });
+
+    renderProjects();
+    initTheme();
+    initReveal();
+    initCounters();
+    initNavSpy();
+  </script>
+  <script type="module">
+    const panel = document.getElementById('delivery-scene-panel');
+    const canvas = document.getElementById('delivery-scene');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    async function initThreeScene() {
+      if (!panel || !canvas || !window.WebGLRenderingContext || window.location.protocol === 'file:' || reduceMotion.matches) return;
+      let THREE;
+      try {
+        THREE = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+      } catch (error) {
+        return;
+      }
+
+      let renderer;
+      try {
+        renderer = new THREE.WebGLRenderer({canvas, alpha: true, antialias: true, powerPreference: 'high-performance'});
+      } catch (error) {
+        return;
+      }
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+      camera.position.set(0, 2.6, 6.5);
+      camera.lookAt(0, .35, 0);
+      const group = new THREE.Group();
+      scene.add(group);
+      scene.add(new THREE.HemisphereLight(0xb7f5ec, 0x10191d, 2.5));
+      const keyLight = new THREE.DirectionalLight(0x9cefe4, 3.5);
+      keyLight.position.set(-3, 5, 4);
+      scene.add(keyLight);
+
+      const accent = getComputedStyle(document.body).getPropertyValue('--accent').trim() || '#69d6ca';
+      const muted = getComputedStyle(document.body).getPropertyValue('--line').trim() || '#2b3e42';
+      const moduleGeometry = new THREE.BoxGeometry(.92, .72, .92);
+      const moduleMaterial = new THREE.MeshStandardMaterial({color: accent, roughness: .38, metalness: .18, transparent: true, opacity: .92});
+      const edgeMaterial = new THREE.LineBasicMaterial({color: accent, transparent: true, opacity: .7});
+      const positions = [[-1.7, .15, 0], [0, .55, 0], [1.7, .15, 0]];
+      positions.forEach(([x, y, z], index) => {
+        const node = new THREE.Mesh(moduleGeometry, moduleMaterial.clone());
+        node.position.set(x, y, z);
+        node.rotation.y = index === 1 ? .22 : -.16;
+        node.scale.setScalar(index === 1 ? 1.08 : .9);
+        group.add(node);
+        const edges = new THREE.LineSegments(new THREE.EdgesGeometry(moduleGeometry), edgeMaterial.clone());
+        edges.position.copy(node.position);
+        edges.rotation.copy(node.rotation);
+        edges.scale.copy(node.scale);
+        group.add(edges);
+      });
+      const connectorGeometry = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-1.2, .42, 0), new THREE.Vector3(-.52, .8, 0),
+        new THREE.Vector3(.52, .8, 0), new THREE.Vector3(1.2, .42, 0)
+      ]);
+      group.add(new THREE.Line(connectorGeometry, new THREE.LineBasicMaterial({color: muted, transparent: true, opacity: .95})));
+      const floor = new THREE.Mesh(new THREE.CircleGeometry(3.4, 48), new THREE.MeshBasicMaterial({color: accent, transparent: true, opacity: .055, side: THREE.DoubleSide}));
+      floor.rotation.x = -Math.PI / 2;
+      floor.position.y = -.28;
+      group.add(floor);
+
+      let frame = 0;
+      let disposed = false;
+      let pointerX = 0;
+      let pointerY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      const resize = () => {
+        const rect = panel.getBoundingClientRect();
+        const width = Math.max(1, rect.width);
+        const height = Math.max(1, rect.height);
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      };
+      const draw = () => {
+        if (disposed) return;
+        targetX += (pointerX - targetX) * .05;
+        targetY += (pointerY - targetY) * .05;
+        group.rotation.y = targetX * .28;
+        group.rotation.x = targetY * .14;
+        if (!reduceMotion.matches) group.rotation.y += frame * .00025;
+        renderer.render(scene, camera);
+        if (!reduceMotion.matches) frame = requestAnimationFrame(draw);
+      };
+      const move = (event) => {
+        const rect = canvas.getBoundingClientRect();
+        pointerX = ((event.clientX - rect.left) / rect.width - .5) * 2;
+        pointerY = ((event.clientY - rect.top) / rect.height - .5) * -2;
+      };
+      const leave = () => { pointerX = 0; pointerY = 0; };
+      resize();
+      panel.dataset.threeReady = 'true';
+      canvas.addEventListener('pointermove', move, {passive: true});
+      canvas.addEventListener('pointerleave', leave, {passive: true});
+      window.addEventListener('resize', resize, {passive: true});
+      window.addEventListener('pagehide', () => {
+        disposed = true;
+        cancelAnimationFrame(frame);
+        canvas.removeEventListener('pointermove', move);
+        canvas.removeEventListener('pointerleave', leave);
+        window.removeEventListener('resize', resize);
+        renderer.dispose();
+        moduleGeometry.dispose();
+        moduleMaterial.dispose();
+      }, {once: true});
+      draw();
+    }
+
+    initThreeScene();
   </script>
 </body>
 </html>
